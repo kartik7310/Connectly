@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import {connectDB} from './config/db.js';
-
+import authRoutes from './routes/auth.routes.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -10,13 +10,13 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 import './config/db.js';
+
+app.use(express.json());
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.use(express.json());
-// Import and use your routes here  
-
+app.use('/api/auth', authRoutes);
 connectDB().then(() => {
   console.log('Database connection established');
 }).catch((err) => {
