@@ -2,6 +2,7 @@ import ConnectionRequest from "../models/connectionRequest.js";
 import logger from "../config/logger.js";
 import AppError from "../utils/AppError.js";
 import User from "../models/user.js";
+import mongoose from "mongoose";
 const ConnectionService = {
   async createConnectionRequest(reqObject) {
 
@@ -56,6 +57,40 @@ const ConnectionService = {
       );
     }
   },
+
+  async reviewConnectionRequest(payload){
+    console.log("payload",payload);
+    
+    try {
+      const {loggedInUser,requestId,status} = payload;
+      const allowedStatus = [ "accepted", "rejected"];
+      if(!allowedStatus.includes(status)){
+        logger.warn(`Invalid status type: ${status}`);
+        throw new AppError("Invalid status type",400);
+      }
+      const connectionReq = await ConnectionRequest.findOne({
+        _id:requestId,
+         toUserId: loggedInUser,
+        status:"interested"
+      });
+      console.log("connectionReq",connectionReq);
+      
+      if(!connectionReq){
+        logger.warn(`Connection request not found: ${requestId}`);
+        throw new AppError("Connection request not found",404);
+      }
+     connectionReq.status = status;
+     await connectionReq.save();
+     logger.info(`Connection request ${requestId} reviewed with status: ${status}`);
+     return connectionReq;
+    } catch (error) {
+      logger.error("Error reviewing connection request", { error });
+      throw new AppError(
+        error.message || "Failed to review connection request",
+        error.statusCode || 500
+      );
+    }
+  }
 };
 
 export default ConnectionService;

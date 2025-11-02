@@ -33,6 +33,28 @@ const ConnectionController = {
       next(err);
     }
   },
+  async reviewConnectionRequests(req, res, next) {
+   try {
+    const loggedInUser = req.user._id;
+    const {requestId,status} = req.params;
+    const reqObject = {
+      loggedInUser,
+    requestId,
+      status
+    };
+    const connectionReq = await ConnectionService.reviewConnectionRequest(reqObject);
+    console.log("connectionReq",connectionReq);
+
+    res.status(200).json({
+      success: true,
+      message: "Connection request reviewed successfully",
+      data: connectionReq,
+    });
+
+   } catch (error) {
+     next(error);
+   }
+  }
 };
 
 export default ConnectionController;
