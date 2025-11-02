@@ -814,3 +814,180 @@
     at Object.reviewConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:88:13)
     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
     at async reviewConnectionRequests (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:45:27)
+2025-11-02 19:45:55 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 19:45:55 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 19:47:18 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 19:47:18 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 19:47:22 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 19:47:23 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 19:47:26 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 19:47:26 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 19:47:33 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 19:47:33 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 19:47:45 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 19:47:45 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 19:49:41 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 19:49:41 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 19:49:50 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 19:49:50 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 19:49:53 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 19:49:53 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 19:49:59 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 19:49:59 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 19:55:10 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 19:55:10 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 19:55:19 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 19:55:19 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 19:57:09 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 19:57:09 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 19:57:11 [[31merror[39m] : ReferenceError: logger is not defined
+    at Object.getConnectionRequests (file:///D:/Connectly/Backend/src/services/user.js:27:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getConnectionRequests (file:///D:/Connectly/Backend/src/controllers/user.js:16:34)
+2025-11-02 19:57:39 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 19:57:39 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 19:57:44 [[32minfo[39m] : Fetched 0 connection requests for user: 690751a29bbb0958c58dedbd
+2025-11-02 19:59:23 [[32minfo[39m] : Fetched 0 connection requests for user: 690751a29bbb0958c58dedbd
+2025-11-02 19:59:43 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 19:59:43 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 19:59:46 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 19:59:46 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 19:59:51 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 19:59:51 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:00:00 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:00:00 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:00:02 [[32minfo[39m] : Fetched 0 connection requests for user: 690751a29bbb0958c58dedbd
+2025-11-02 20:00:48 [[32minfo[39m] : Fetched 1 connection requests for user: 690751a29bbb0958c58dedbd
+2025-11-02 20:06:10 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:06:10 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:06:13 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:06:13 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:06:24 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:06:24 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:06:31 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:06:31 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:06:48 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:06:48 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:07:02 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:07:02 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:07:05 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:07:05 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:07:11 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:07:11 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:07:13 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:07:13 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:07:33 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:07:33 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:07:49 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:07:49 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:08:03 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:08:03 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:08:06 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:08:06 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:08:13 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:08:13 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:08:17 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:08:17 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:08:37 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:08:37 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:08:38 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:08:38 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:08:43 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:08:43 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:08:48 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:08:48 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:08:52 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:08:52 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:09:09 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:09:09 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:09:12 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:09:12 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:09:16 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:09:16 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:10:22 [[32minfo[39m] : Fetched 1 connections for user: 690751a29bbb0958c58dedbd
+2025-11-02 20:12:09 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:12:09 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:13:24 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:13:24 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:13:40 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:13:40 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:14:19 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:14:19 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:14:45 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:14:45 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:14:51 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:14:51 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:14:53 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:14:53 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:14:59 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:14:59 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:15:02 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:15:02 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:15:45 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:15:45 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:16:18 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:16:18 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:16:21 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:16:21 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:16:37 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:16:37 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:16:38 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:16:38 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:16:53 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:16:53 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:16:58 [[32minfo[39m] : Fetched 0 connection requests for user: 690751a29bbb0958c58dedbd
+2025-11-02 20:17:12 [[32minfo[39m] : Fetched 1 connections for user: 690751a29bbb0958c58dedbd
+2025-11-02 20:17:42 [[32minfo[39m] : Fetched 1 connection requests for user: 690751a29bbb0958c58dedbd
+2025-11-02 20:21:07 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:21:07 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:21:10 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:21:10 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:21:43 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:21:43 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:21:45 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:21:45 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:21:49 [[32minfo[39m] : Fetched 1 connection requests for user: 690751a29bbb0958c58dedbd
+2025-11-02 20:22:56 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:22:56 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:23:00 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:23:00 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:23:10 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:23:10 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:23:15 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:23:15 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:23:19 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:23:19 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:23:34 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:23:34 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:23:44 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:23:44 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:24:16 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:24:16 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:24:24 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:24:24 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:24:34 [[32minfo[39m] : Fetched 1 connection requests for user: 690751a29bbb0958c58dedbd
+2025-11-02 20:25:02 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 20:25:02 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 20:25:04 [[32minfo[39m] : Fetched 1 connection requests for user: 690751a29bbb0958c58dedbd
+2025-11-02 21:13:10 [[32minfo[39m] : Fetched 1 connection requests for user: 690751a29bbb0958c58dedbd
+2025-11-02 21:13:44 [[32minfo[39m] : Fetched 1 connection requests for user: 690751a29bbb0958c58dedbd
+2025-11-02 21:21:05 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 21:21:05 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 21:21:23 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 21:21:23 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 21:21:27 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 21:21:27 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 21:21:29 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 21:21:29 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 21:21:43 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 21:21:43 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 21:21:58 [[32minfo[39m] : Fetched 1 connection requests for user: 690751a29bbb0958c58dedbd
+2025-11-02 21:21:59 [[32minfo[39m] : Fetched 1 connection requests for user: 690751a29bbb0958c58dedbd
+2025-11-02 21:22:10 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 21:22:10 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 21:22:14 [[32minfo[39m] : Fetched 1 connection requests for user: 690751a29bbb0958c58dedbd
+2025-11-02 21:22:56 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 21:22:56 [[32minfo[39m] : MongoDB connected successfully
+2025-11-02 21:22:56 [[32minfo[39m] : Fetched 1 connection requests for user: 690751a29bbb0958c58dedbd
+2025-11-02 21:23:06 [[32minfo[39m] : Server is running on port 5000
+2025-11-02 21:23:06 [[32minfo[39m] : MongoDB connected successfully

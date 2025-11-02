@@ -33,6 +33,7 @@ const ConnectionController = {
       next(err);
     }
   },
+
   async reviewConnectionRequests(req, res, next) {
    try {
     const loggedInUser = req.user._id;
@@ -54,7 +55,9 @@ const ConnectionController = {
    } catch (error) {
      next(error);
    }
-  }
+  },
+
+ 
 };
 
 export default ConnectionController;

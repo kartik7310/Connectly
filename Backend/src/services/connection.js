@@ -2,7 +2,7 @@ import ConnectionRequest from "../models/connectionRequest.js";
 import logger from "../config/logger.js";
 import AppError from "../utils/AppError.js";
 import User from "../models/user.js";
-import mongoose from "mongoose";
+
 const ConnectionService = {
   async createConnectionRequest(reqObject) {
 
@@ -90,7 +90,8 @@ const ConnectionService = {
         error.statusCode || 500
       );
     }
-  }
+  },
+ 
 };
 
 export default ConnectionService;

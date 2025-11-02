@@ -344,3 +344,7 @@
     at Object.reviewConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:88:13)
     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
     at async reviewConnectionRequests (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:45:27)
+2025-11-02 19:57:11 [[31merror[39m] : ReferenceError: logger is not defined
+    at Object.getConnectionRequests (file:///D:/Connectly/Backend/src/services/user.js:27:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getConnectionRequests (file:///D:/Connectly/Backend/src/controllers/user.js:16:34)

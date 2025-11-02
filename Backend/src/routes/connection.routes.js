@@ -6,4 +6,5 @@ router.post("/request/send/:status/:toUserId", protect, ConnectionController.sen
 router.post("/request/review/:requestId/:status", protect, ConnectionController.reviewConnectionRequests);
 
 
+
 export default router;
