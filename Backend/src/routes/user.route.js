@@ -6,6 +6,7 @@ const router = express.Router();
 router.get("/view", protect, ProfileController.getProfile);
 router.get("/user/request/received", protect, ProfileController.getConnectionRequests);
 router.get("/user/connections", protect, ProfileController.getAllConnections);
+router.get("/user/feed", protect, ProfileController.getFeeds);
 
 
 export default router;

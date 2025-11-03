@@ -36,6 +36,26 @@ const ProfileController = {
       next(error);
     }
   },
+
+  async getFeeds(req, res, next) {
+  try {
+    const loggedInUser = req.user._id;
+    const page = Math.max(1, parseInt(req.query.page) || 1);
+    let limit = parseInt(req.query.limit) || 10;
+    limit = limit > 50 ? 50 : limit;
+    const skip = (page - 1) * limit;
+
+    const feeds = await ProfileService.getFeeds(loggedInUser, { limit, skip });
+
+    res.status(200).json({
+      success: true,
+      message: "Feeds retrieved successfully",
+      data: feeds,
+    });
+  } catch (error) {
+    next(error);
+  }
+},
 }
 
 export default ProfileController;
