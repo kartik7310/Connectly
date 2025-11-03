@@ -96,3 +96,4 @@ async getFeeds(loggedInUser, pagination) {
 }
 };
  export default ProfileService;
+ 
