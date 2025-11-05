@@ -5,7 +5,6 @@ import User from "../models/user.js";
 export const protect = async (req, res, next) => {
   try {
     const token = req.cookies?.token || req.headers.authorization?.split(" ")[1];
-    console.log("token", token);
     if (!token) {
       return res.status(401).json({ message: "Not authorized, token missing" });
     }

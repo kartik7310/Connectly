@@ -3,7 +3,8 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import {connectDB} from './config/db.js';
 import authRoutes from './routes/auth.routes.js';
-import Profile from "./routes/user.route.js"
+import UserRoutes from "./routes/user.route.js"
+import ProfileRoutes from "./routes/profile.routes.js"
 import logger from "./config/logger.js";
 import cookieParser from "cookie-parser";
 import globalErrorHandler from "./middleware/errorMiddleware.js"
@@ -22,12 +23,14 @@ app.use(cors({
 import './config/db.js';
 
 
+
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
 app.use('/api/v1/auth', authRoutes);
-app.use('/api/v1/profile',Profile );
+app.use('/api/v1/user',UserRoutes );
+app.use('/api/v1/profile',ProfileRoutes );
 app.use('/api/v1/connections', ConnectionRoutes);
 
 app.use(globalErrorHandler);

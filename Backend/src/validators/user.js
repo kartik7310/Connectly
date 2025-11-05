@@ -14,9 +14,11 @@ export const loginSchema = z.object({
 });
 
 export const updateUserSchema = z.object({
-  name: z.string().min(2).max(100).optional(),
+  firstName: z.string().min(2).max(100).optional(),
+  lastName: z.string().min(2).max(100).optional(),
+  photoUrl: z.string().optional(),
   age: z.number().min(0).max(120).optional(),
   gender: z.string().min(2).max(100).optional(),
   skills: z.array(z.string()).optional(),
-  bio: z.string().max(500).optional()
+  about: z.string().max(500).optional()
 });

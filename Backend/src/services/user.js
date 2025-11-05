@@ -3,7 +3,7 @@ import ConnectionRequest from "../models/connectionRequest.js";
 import User from "../models/user.js";  
 
 const POPULATE_FIELDS = "firstName lastName age photoUrl skills about gender ";
-const ProfileService = {
+const UserService = {
   async getProfile(userId) {
     try {
       const user = await User.findById(userId);
@@ -95,5 +95,5 @@ async getFeeds(loggedInUser, pagination) {
   }
 }
 };
- export default ProfileService;
+ export default UserService;
  
