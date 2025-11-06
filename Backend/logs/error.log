@@ -572,3 +572,156 @@
     at Object.updateProfile (file:///D:/Connectly/Backend/src/services/profile.js:35:13)
     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
     at async updateProfile (file:///D:/Connectly/Backend/src/controllers/profile.js:32:25)
+2025-11-05 21:12:57 [[31merror[39m] : ReferenceError: CustomError is not defined
+    at updateProfile (file:///D:/Connectly/Backend/src/controllers/profile.js:23:7)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-05 21:32:14 [[31merror[39m] : Error: Validation failed: photoUrl: Please enter a valid image URL
+    at Object.updateProfile (file:///D:/Connectly/Backend/src/services/profile.js:35:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async updateProfile (file:///D:/Connectly/Backend/src/controllers/profile.js:32:25)
+2025-11-05 21:33:24 [[31merror[39m] : Error: Validation failed: photoUrl: Please enter a valid image URL
+    at Object.updateProfile (file:///D:/Connectly/Backend/src/services/profile.js:35:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async updateProfile (file:///D:/Connectly/Backend/src/controllers/profile.js:32:25)
+2025-11-05 21:34:47 [[31merror[39m] : Error: Validation failed: photoUrl: Please enter a valid image URL
+    at Object.updateProfile (file:///D:/Connectly/Backend/src/services/profile.js:35:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async updateProfile (file:///D:/Connectly/Backend/src/controllers/profile.js:32:25)
+2025-11-05 21:35:54 [[31merror[39m] : Error: Validation failed: photoUrl: Please enter a valid image URL
+    at Object.updateProfile (file:///D:/Connectly/Backend/src/services/profile.js:35:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async updateProfile (file:///D:/Connectly/Backend/src/controllers/profile.js:32:25)
+2025-11-06 09:48:03 [[31merror[39m] : ReferenceError: CustomError is not defined
+    at updateProfile (file:///D:/Connectly/Backend/src/controllers/profile.js:23:7)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 09:48:09 [[31merror[39m] : ReferenceError: CustomError is not defined
+    at updateProfile (file:///D:/Connectly/Backend/src/controllers/profile.js:23:7)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 09:48:40 [[31merror[39m] : Error: Validation failed
+    at updateProfile (file:///D:/Connectly/Backend/src/controllers/profile.js:23:13)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 09:48:41 [[31merror[39m] : Error: Validation failed
+    at updateProfile (file:///D:/Connectly/Backend/src/controllers/profile.js:23:13)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 09:48:45 [[31merror[39m] : Error: Validation failed
+    at updateProfile (file:///D:/Connectly/Backend/src/controllers/profile.js:23:13)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 09:49:11 [[31merror[39m] : Error: Validation failed
+    at updateProfile (file:///D:/Connectly/Backend/src/controllers/profile.js:23:13)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 10:57:28 [[31merror[39m] : Error reviewing connection request
+2025-11-06 10:57:28 [[31merror[39m] : Error: Connection request not found
+    at Object.reviewConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async reviewConnectionRequests (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:46:27)
+2025-11-06 10:57:33 [[31merror[39m] : Error reviewing connection request
+2025-11-06 10:57:33 [[31merror[39m] : Error: Connection request not found
+    at Object.reviewConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async reviewConnectionRequests (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:46:27)
+2025-11-06 11:00:47 [[31merror[39m] : Error creating connection request
+2025-11-06 11:00:47 [[31merror[39m] : Error: Cannot send connection request to yourself!
+    at Object.createConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:54:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async sendConnectionRequest (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:25:9)
+2025-11-06 11:01:17 [[31merror[39m] : Error reviewing connection request
+2025-11-06 11:01:17 [[31merror[39m] : Error: Connection request not found
+    at Object.reviewConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async reviewConnectionRequests (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:46:27)
+2025-11-06 11:02:49 [[31merror[39m] : Error reviewing connection request
+2025-11-06 11:02:49 [[31merror[39m] : Error: Invalid status type
+    at Object.reviewConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:88:13)
+    at reviewConnectionRequests (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:46:51)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 11:03:03 [[31merror[39m] : Error reviewing connection request
+2025-11-06 11:03:03 [[31merror[39m] : Error: Invalid status type
+    at Object.reviewConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:88:13)
+    at reviewConnectionRequests (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:46:51)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 11:06:57 [[31merror[39m] : Error reviewing connection request
+2025-11-06 11:06:57 [[31merror[39m] : Error: Invalid status type
+    at Object.reviewConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:88:13)
+    at reviewConnectionRequests (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:46:51)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 11:07:51 [[31merror[39m] : Error reviewing connection request
+2025-11-06 11:07:51 [[31merror[39m] : Error: Connection request not found
+    at Object.reviewConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async reviewConnectionRequests (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:46:27)
+2025-11-06 11:08:15 [[31merror[39m] : Error reviewing connection request
+2025-11-06 11:08:15 [[31merror[39m] : Error: Connection request not found
+    at Object.reviewConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async reviewConnectionRequests (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:46:27)
+2025-11-06 11:09:45 [[31merror[39m] : Error reviewing connection request
+2025-11-06 11:09:45 [[31merror[39m] : Error: Connection request not found
+    at Object.reviewConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async reviewConnectionRequests (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:46:27)
+2025-11-06 11:10:09 [[31merror[39m] : Error reviewing connection request
+2025-11-06 11:10:09 [[31merror[39m] : Error: Connection request not found
+    at Object.reviewConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async reviewConnectionRequests (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:46:27)
+2025-11-06 11:19:17 [[31merror[39m] : Error reviewing connection request
+2025-11-06 11:19:17 [[31merror[39m] : Error: mongoose is not defined
+    at Object.reviewConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:87:13)
+    at reviewConnectionRequests (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:46:51)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 11:21:02 [[31merror[39m] : Error reviewing connection request
+2025-11-06 11:21:02 [[31merror[39m] : Error: Connection request not found
+    at Object.reviewConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:87:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async reviewConnectionRequests (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:46:27)
+2025-11-06 13:18:46 [[31merror[39m] : Error reviewing connection request
+2025-11-06 13:18:46 [[31merror[39m] : Error: Connection request not found
+    at Object.reviewConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:87:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async reviewConnectionRequests (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:46:27)
+2025-11-06 13:21:28 [[31merror[39m] : Error reviewing connection request
+2025-11-06 13:21:28 [[31merror[39m] : Error: Connection request not found
+    at Object.reviewConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:87:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async reviewConnectionRequests (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:46:27)
+2025-11-06 13:25:43 [[31merror[39m] : Error reviewing connection request
+2025-11-06 13:25:43 [[31merror[39m] : Error: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+    at Object.reviewConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:87:13)
+    at reviewConnectionRequests (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:46:51)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)

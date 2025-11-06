@@ -2,11 +2,12 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Outlet, useNavigate } from "react-router-dom";
-import { ToastContainer } from 'react-toastify';
-import Auth from "../services/authService"
+import { ToastContainer } from 'react-toastify'
+import Profile from "../services/profileService";
 import { useDispatch,useSelector } from "react-redux";
 import { addUser } from "../store/store-slices/userSlice";
 import { useEffect } from "react";
+
 
 export default function Layout() {
   const navigate = useNavigate()
@@ -16,7 +17,7 @@ export default function Layout() {
    
    const fetchUser = async()=>{
     try {
-      const res = await Auth.getProfile()
+      const res = await Profile.getProfile()
       dispatch(addUser(res.data))
     } catch (error) {
       navigate("/login")

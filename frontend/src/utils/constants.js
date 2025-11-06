@@ -3,9 +3,12 @@ export const baseUrl = "http://localhost:5000/api/v1";
 export const apiEndpoints = {
   signUp: "/auth/signup",
   login: "/auth/login",
-  Profile:"/profile/view",
   logout: "/auth/logout",
-  getFeed:"/profile/user/feed"
+  getFeed:"/user/feed",
+   Profile:"/profile/view",
+  updateProfile:"/profile/update",
+  connections:"/user/connections",
+  request:"/user/request/received"
 };
 
 export const validations = {

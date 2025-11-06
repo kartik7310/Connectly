@@ -46,17 +46,7 @@ class AuthService {
         }
     }
 
-    async getProfile(){
-        try {
-            const res = await axios.get(this.baseUrl + apiEndpoints.Profile,{
-                    withCredentials: true,
-                })
-            return res
-        } catch (error) {
-             const serverMsg = err?.response?.data?.message || err?.response?.data?.error;
-    throw new Error(serverMsg || "Invalid credentials"); 
-        }
-    }
+   
     async logout(){
         try {
             const {data} = await axios.post(this.baseUrl + apiEndpoints.logout,   {}, {

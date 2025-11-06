@@ -2,7 +2,7 @@ import ConnectionRequest from "../models/connectionRequest.js";
 import logger from "../config/logger.js";
 import AppError from "../utils/AppError.js";
 import User from "../models/user.js";
-
+import mongoose from "mongoose";
 const ConnectionService = {
   async createConnectionRequest(reqObject) {
 
@@ -59,7 +59,6 @@ const ConnectionService = {
   },
 
   async reviewConnectionRequest(payload){
-    console.log("payload",payload);
     
     try {
       const {loggedInUser,requestId,status} = payload;
@@ -69,9 +68,9 @@ const ConnectionService = {
         throw new AppError("Invalid status type",400);
       }
       const connectionReq = await ConnectionRequest.findOne({
-        _id:requestId,
-         toUserId: loggedInUser,
-        status:"interested"
+          _id: new mongoose.Types.ObjectId(requestId),      
+      toUserId: new mongoose.Types.ObjectId(loggedInUser), 
+      status: "interested"
       });
       console.log("connectionReq",connectionReq);
       

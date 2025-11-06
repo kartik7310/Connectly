@@ -22,7 +22,7 @@ export default function Login() {
      if(res?.data?.success){
        dispatch(addUser(res.data.user));
       toast.success(res.message || "Logged in");
-      navigate("/", { replace:true })
+      navigate("/feed", { replace:true })
      }
     } catch(err){
         toast.error(err.message);

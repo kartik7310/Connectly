@@ -20,7 +20,7 @@ const ProfileController = {
 
     if (!parsed.success) {
       logger.warn("Validation failed on updateProfile request", parsed.error.flatten());
-      throw new CustomError("Validation failed", 400);
+      throw new AppError("Validation failed", 400);
     }
 
     const userId = req?.user?.id || req.params.userId;

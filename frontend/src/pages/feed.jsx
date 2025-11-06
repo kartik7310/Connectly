@@ -10,7 +10,7 @@ const Feed = () => {
   const dispatch = useDispatch()
 const getFeed = async()=>{
   try {
-     if(feed==null) return
+     if(feed && feed.length>0) return
     const {data,success} = await feedService.getFeed();
   const userData = data.users
   
