@@ -27,6 +27,16 @@ const getFeed = async()=>{
 useEffect(()=>{
   getFeed()
 },[])
+
+  if (!Array.isArray(feed) || feed.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[400px] text-center">
+        <div className="text-6xl mb-4">📭</div>
+        <h2 className="text-2xl font-semibold text-gray-700 mb-2">No feed</h2>
+        <p className="text-gray-500">You don't have any feed at the moment</p>
+      </div>
+    );
+  }
   return (
     <div>
       <UserCard user={Array.isArray(feed) ? feed[0] : undefined} />

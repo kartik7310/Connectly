@@ -1905,3 +1905,5 @@
 2025-11-06 13:42:27 [[32minfo[39m] : Fetched 0 connections for user: 690751a29bbb0958c58dedbd
 2025-11-06 13:42:31 [[32minfo[39m] : Fetched 0 connections for user: 690751a29bbb0958c58dedbd
 2025-11-06 13:43:03 [[32minfo[39m] : Fetched 0 connections for user: 690751a29bbb0958c58dedbd
+2025-11-06 13:52:15 [[32minfo[39m] : Server is running on port 5000
+2025-11-06 13:52:15 [[32minfo[39m] : MongoDB connected successfully

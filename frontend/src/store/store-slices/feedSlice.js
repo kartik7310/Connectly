@@ -6,7 +6,10 @@ export const feedSlice = createSlice({
   },
   reducers: {
     addFeed: (state,actions) => actions.payload,
-    removeFeed: (state,actions) =>null,
+    removeFeed: (state,actions) =>{
+      const newFeed = state.filter((feed)=>feed._id !==actions.payload);
+      return newFeed
+    }
   },
 })
 
