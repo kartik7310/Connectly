@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Pricing = ({clickHandle,title, price, features, disabledFeatures}) => {
+const Pricing = ({isPremium,clickHandle,title, price, features, disabledFeatures}) => {
   return (
     <div className="card w-96 bg-base-100 shadow-sm">
       <div className="card-body">
@@ -8,7 +8,7 @@ const Pricing = ({clickHandle,title, price, features, disabledFeatures}) => {
 
         <div className="flex justify-between">
           <h2 className="text-3xl font-bold">{title}</h2>
-          <span className="text-xl">${price}/mo</span>
+        { isPremium && title== "Silver"? "Member": <span className="text-xl">${price}/mo</span>}
         </div>
 
         <ul className="mt-6 flex flex-col gap-2 text-xs">
@@ -28,7 +28,7 @@ const Pricing = ({clickHandle,title, price, features, disabledFeatures}) => {
         </ul>
 
         <div className="mt-6">
-          <button className="btn btn-primary btn-block" onClick={()=>clickHandle({planType:title})}>Subscribe</button>
+         { isPremium && title== "Silver" ? "You are already a premium user" :<button className="btn btn-primary btn-block" onClick={()=>clickHandle({planType:title})}>Subscribe</button>}
         </div>
       </div>
     </div>

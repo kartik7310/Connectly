@@ -1,7 +1,23 @@
 import React from 'react'
 import Pricing from '../components/Pricing'
 import subscription from '../services/subscription'
+import { useState } from 'react'
 const premium = () => {
+  const [isPremium, setIsPremium] = useState(true) 
+  const verifyPremiumUser = async()=>{
+    try {
+      const res = await subscription.checkPremium()
+      if(res.data.isPremium){
+        setIsPremium(true)
+      }else{
+        setIsPremium(false)
+      }
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+
   const createOrder = async({planType})=>{
     console.log("plan",planType);
     let order;
@@ -10,11 +26,12 @@ const premium = () => {
       console.log(order.data);
       
     } catch (error) {
+      console.log(error);
       
     }
   
   const {amount,currency,orderId,notes} = order.data
-const options = {
+  const options = {
     key:"rzp_test_RckpqiN886sfR0",
     amount,
     currency,
@@ -27,14 +44,16 @@ const options = {
       email:notes.email,
       contact:"9999999999",
     },
-    handler: async function (response){
-        // here call backend to verify
-        await axios.post('/api/payment/verify', response);
+    handler:verifyPremiumUser
+      
     }
-};
- const rzp = new window.Razorpay(options);
+     const rzp = new window.Razorpay(options);
  rzp.open();
-  }
+ };
+
+  
+
+
 
 
   return (
@@ -43,6 +62,8 @@ const options = {
       {/* Silver */}
       <Pricing 
        clickHandle ={createOrder}
+       isPremium={isPremium}
+      
         title="Silver"
         price={9}
         features={[
@@ -59,6 +80,8 @@ const options = {
 
       {/* Gold */}
       <Pricing 
+      isPremium={isPremium}
+    
       clickHandle ={createOrder}
         title="Gold"
         price={29}
@@ -77,5 +100,4 @@ const options = {
     </div>
   )
 }
-
 export default premium

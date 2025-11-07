@@ -5,6 +5,7 @@ import SubscriptionController from "../controllers/subscription.js";
 
 const router = express.Router();
 router.post("/order-create", protect, SubscriptionController.createOrder);
+router.get("/isPremium", protect, SubscriptionController.getSubscriptions);
 
 
 

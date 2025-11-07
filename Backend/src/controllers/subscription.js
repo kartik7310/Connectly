@@ -3,6 +3,8 @@ import logger from "../config/logger.js";
 import AppError from "../utils/AppError.js";
 import { membershipType } from "../utils/planType.js";
 import Subscription from "../models/subscription.js";
+import { validateWebhookSignature } from "razorpay/dist/utils/razorpay-utils.js";
+import User from "../models/user.js";
 const SubscriptionController = {
   async createOrder(req, res, next) {
     try {
@@ -86,6 +88,56 @@ const SubscriptionController = {
       next(
         new AppError("Failed to create order. Please try again later.", 500)
       );
+    }
+  },
+  async verifyPaymentWebhook(req, res, next) {
+    try {
+      const signature = req.get["x-razorpay-signature"]
+   const isWebhookValid = validateWebhookSignature(
+    JSON.stringify(req.body),
+    signature,
+    process.env.WEBHOOK_KEY_SECRET 
+   )
+   if(isWebhookValid){
+    return new AppError("Invalid signature",400)
+   }
+
+   //update subscription status in db
+const paymentDetails = req.body.payload.payment.entity
+ const subscription = await Subscription.findOne({
+  razorpayOrderId: paymentDetails.order_id
+ })
+ if(!subscription){
+  return new AppError("Subscription not found",404)
+ }
+ subscription.status = paymentDetails.status
+ await subscription.save()
+const user = await User.findById({_id:subscription.userId})
+if(!user){
+  return new AppError("User not found",404)
+}
+user.isPremium = true
+user.membershipType = subscription?.notes?.membershipType
+ 
+res.status(200).json({
+  success:true,
+  message:"Webhook received successfully"
+}   
+)
+    } catch (error) {
+      new AppError(error.message, error.statusCode)
+    }
+  },
+  async getSubscriptions(req, res, next) {
+    try {
+      const user = req.user.toJSON()
+      if(user.isPremium){
+        return res.status(200).json({isPremium:true})
+      }
+      return res.status(200).json({isPremium:false})
+     
+    } catch (error) {
+      
     }
   },
 };

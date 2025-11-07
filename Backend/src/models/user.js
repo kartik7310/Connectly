@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { string } from "zod";
 
 const userSchema = new mongoose.Schema(
   {
@@ -52,6 +53,8 @@ const userSchema = new mongoose.Schema(
     },
     role: { type: String, enum: ["user", "admin"], default: "user" },
     isVerified: { type: Boolean, default: false },
+    isPremium: { type: Boolean, default: false },
+    membershipType :{type:string},
     lastLogin: { type: Date },
   },
   { timestamps: true }

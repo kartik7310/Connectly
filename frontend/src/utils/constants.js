@@ -9,7 +9,8 @@ export const apiEndpoints = {
   updateProfile:"/profile/update",
   connections:"/user/connections",
   request:"/user/request/received",
-  createOrder:"/payment/order-create"
+  createOrder:"/payment/order-create",
+  isPremium:"/payment/isPremium",
 };
 
 export const validations = {
