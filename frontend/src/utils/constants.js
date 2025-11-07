@@ -8,7 +8,8 @@ export const apiEndpoints = {
    Profile:"/profile/view",
   updateProfile:"/profile/update",
   connections:"/user/connections",
-  request:"/user/request/received"
+  request:"/user/request/received",
+  createOrder:"/payment/order-create"
 };
 
 export const validations = {

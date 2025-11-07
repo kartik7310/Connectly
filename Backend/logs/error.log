@@ -725,3 +725,106 @@
     at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
     at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 15:33:11 [[31merror[39m] : Error: Invalid status type
+    at Object.createConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:15:13)
+    at sendConnectionRequest (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:25:33)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 15:36:07 [[31merror[39m] : Error: Invalid status type
+    at Object.createConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:15:13)
+    at sendConnectionRequest (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:25:33)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 15:36:09 [[31merror[39m] : Error: Invalid status type
+    at Object.createConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:15:13)
+    at sendConnectionRequest (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:25:33)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 15:37:58 [[31merror[39m] : Error: Invalid status type
+    at Object.createConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:15:13)
+    at sendConnectionRequest (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:25:33)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 15:38:00 [[31merror[39m] : Error: Invalid status type
+    at Object.createConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:15:13)
+    at sendConnectionRequest (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:25:33)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:38:58 [[31merror[39m] : ReferenceError: userId is not defined
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:18:49)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:16:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:38:58 [[31merror[39m] : Error: Failed to create order. Please try again later.
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:91:12)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:16:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:39:29 [[31merror[39m] : Error creating order
+2025-11-07 13:39:29 [[31merror[39m] : Error: Payment gateway error: receipt: the length must be no more than 40.
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:82:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:40:09 [[31merror[39m] : ValidationError: Subscription validation failed: notes.membershipType: `silver` is not a valid enum value for path `notes.membershipType`.
+    at Document.invalidate (D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3362:32)
+    at D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3123:17
+    at D:\Connectly\Backend\node_modules\mongoose\lib\schemaType.js:1420:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)
+2025-11-07 13:40:09 [[31merror[39m] : Error: Failed to create order. Please try again later.
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:91:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:40:33 [[31merror[39m] : ValidationError: Subscription validation failed: notes.membershipType: `silver` is not a valid enum value for path `notes.membershipType`.
+    at Document.invalidate (D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3362:32)
+    at D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3123:17
+    at D:\Connectly\Backend\node_modules\mongoose\lib\schemaType.js:1420:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)
+2025-11-07 13:40:33 [[31merror[39m] : Error: Failed to create order. Please try again later.
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:91:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:41:39 [[31merror[39m] : ValidationError: Subscription validation failed: notes.membershipType: `silver` is not a valid enum value for path `notes.membershipType`.
+    at Document.invalidate (D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3362:32)
+    at D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3123:17
+    at D:\Connectly\Backend\node_modules\mongoose\lib\schemaType.js:1420:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)
+2025-11-07 13:41:39 [[31merror[39m] : Error: Failed to create order. Please try again later.
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:91:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:42:06 [[31merror[39m] : ValidationError: Subscription validation failed: notes.membershipType: `silver` is not a valid enum value for path `notes.membershipType`.
+    at Document.invalidate (D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3362:32)
+    at D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3123:17
+    at D:\Connectly\Backend\node_modules\mongoose\lib\schemaType.js:1420:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)
+2025-11-07 13:42:06 [[31merror[39m] : Error: Failed to create order. Please try again later.
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:93:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:42:51 [[31merror[39m] : Error: Invalid membership type provided
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:17:15)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:16:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:42:51 [[31merror[39m] : Error: Invalid membership type provided
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:17:15)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:16:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:43:20 [[31merror[39m] : ValidationError: Subscription validation failed: notes.membershipType: `silver` is not a valid enum value for path `notes.membershipType`.
+    at Document.invalidate (D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3362:32)
+    at D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3123:17
+    at D:\Connectly\Backend\node_modules\mongoose\lib\schemaType.js:1420:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)
+2025-11-07 13:43:20 [[31merror[39m] : Error: Failed to create order. Please try again later.
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:93:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)

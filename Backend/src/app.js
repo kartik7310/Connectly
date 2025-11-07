@@ -9,6 +9,7 @@ import logger from "./config/logger.js";
 import cookieParser from "cookie-parser";
 import globalErrorHandler from "./middleware/errorMiddleware.js"
 import ConnectionRoutes from "./routes/connection.routes.js"
+import SubscriptionRoutes from "./routes/subscription.routes.js"
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
@@ -32,6 +33,7 @@ app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/user',UserRoutes );
 app.use('/api/v1/profile',ProfileRoutes );
 app.use('/api/v1/connections', ConnectionRoutes);
+app.use('/api/v1/payment', SubscriptionRoutes);
 
 app.use(globalErrorHandler);
 connectDB().then(() => {

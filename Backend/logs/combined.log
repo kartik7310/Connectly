@@ -1907,3 +1907,310 @@
 2025-11-06 13:43:03 [[32minfo[39m] : Fetched 0 connections for user: 690751a29bbb0958c58dedbd
 2025-11-06 13:52:15 [[32minfo[39m] : Server is running on port 5000
 2025-11-06 13:52:15 [[32minfo[39m] : MongoDB connected successfully
+2025-11-06 15:33:11 [[33mwarn[39m] : Invalid status type: undefined
+2025-11-06 15:33:11 [[31merror[39m] : Error: Invalid status type
+    at Object.createConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:15:13)
+    at sendConnectionRequest (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:25:33)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 15:36:07 [[33mwarn[39m] : Invalid status type: undefined
+2025-11-06 15:36:07 [[31merror[39m] : Error: Invalid status type
+    at Object.createConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:15:13)
+    at sendConnectionRequest (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:25:33)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 15:36:09 [[33mwarn[39m] : Invalid status type: undefined
+2025-11-06 15:36:09 [[31merror[39m] : Error: Invalid status type
+    at Object.createConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:15:13)
+    at sendConnectionRequest (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:25:33)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 15:37:58 [[33mwarn[39m] : Invalid status type: undefined
+2025-11-06 15:37:58 [[31merror[39m] : Error: Invalid status type
+    at Object.createConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:15:13)
+    at sendConnectionRequest (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:25:33)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 15:38:00 [[33mwarn[39m] : Invalid status type: ignore
+2025-11-06 15:38:00 [[31merror[39m] : Error: Invalid status type
+    at Object.createConnectionRequest (file:///D:/Connectly/Backend/src/services/connection.js:15:13)
+    at sendConnectionRequest (file:///D:/Connectly/Backend/src/controllers/connectionRequest.js:25:33)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:14:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-06 15:38:54 [[32minfo[39m] : Connection request created from 690751a29bbb0958c58dedbd → 690a255e363fe1624258eb25 with status: interested
+2025-11-06 15:39:11 [[32minfo[39m] : Connection request created from 690751a29bbb0958c58dedbd → 690a25ebec648b1680a45ecd with status: interested
+2025-11-06 15:42:41 [[32minfo[39m] : Fetched 4 connection requests for user: 690751a29bbb0958c58dedbd
+2025-11-06 15:42:44 [[32minfo[39m] : Fetched 0 connections for user: 690751a29bbb0958c58dedbd
+2025-11-06 15:42:49 [[32minfo[39m] : Fetched 0 connections for user: 690751a29bbb0958c58dedbd
+2025-11-06 15:42:54 [[32minfo[39m] : Fetched 4 connection requests for user: 690751a29bbb0958c58dedbd
+2025-11-06 15:45:21 [[32minfo[39m] : User profile updated successfully for userId: 690751a29bbb0958c58dedbd
+2025-11-07 11:32:52 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 11:32:52 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 11:35:40 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 11:35:40 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 11:51:58 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 11:51:58 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 11:52:27 [[32minfo[39m] : Fetched 4 connection requests for user: 690751a29bbb0958c58dedbd
+2025-11-07 11:52:28 [[32minfo[39m] : Fetched 0 connections for user: 690751a29bbb0958c58dedbd
+2025-11-07 13:15:57 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:15:57 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:16:08 [[32minfo[39m] : User logged in: kunal@gmail.com
+2025-11-07 13:18:20 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:18:20 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:18:22 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:18:22 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:18:28 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:18:29 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:18:31 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:18:31 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:18:32 [[32minfo[39m] : User logged in: kunal@gmail.com
+2025-11-07 13:19:04 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:19:04 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:19:07 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:19:12 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:19:12 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:19:22 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:19:22 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:19:38 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:19:38 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:19:41 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:19:41 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:19:46 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:19:46 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:19:52 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:19:52 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:19:54 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:19:54 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:20:10 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:20:10 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:20:13 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:20:13 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:20:17 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:20:17 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:20:22 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:20:22 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:20:27 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:20:27 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:20:33 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:20:33 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:20:38 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:20:38 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:20:49 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:20:49 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:20:51 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:20:51 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:20:56 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:20:56 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:20:59 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:20:59 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:21:04 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:21:04 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:21:21 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:21:21 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:22:26 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:22:26 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:37:12 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:37:12 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:38:17 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:38:17 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:38:58 [[31merror[39m] : ReferenceError: userId is not defined
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:18:49)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:16:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:38:58 [[31merror[39m] : Error: Failed to create order. Please try again later.
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:91:12)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:16:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:39:16 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:39:16 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:39:21 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:39:21 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:39:29 [[31merror[39m] : Error creating order
+2025-11-07 13:39:29 [[31merror[39m] : Error: Payment gateway error: receipt: the length must be no more than 40.
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:82:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:40:02 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:40:02 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:40:06 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:40:06 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:40:09 [[31merror[39m] : ValidationError: Subscription validation failed: notes.membershipType: `silver` is not a valid enum value for path `notes.membershipType`.
+    at Document.invalidate (D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3362:32)
+    at D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3123:17
+    at D:\Connectly\Backend\node_modules\mongoose\lib\schemaType.js:1420:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)
+2025-11-07 13:40:09 [[31merror[39m] : Error: Failed to create order. Please try again later.
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:91:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:40:30 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:40:30 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:40:33 [[31merror[39m] : ValidationError: Subscription validation failed: notes.membershipType: `silver` is not a valid enum value for path `notes.membershipType`.
+    at Document.invalidate (D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3362:32)
+    at D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3123:17
+    at D:\Connectly\Backend\node_modules\mongoose\lib\schemaType.js:1420:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)
+2025-11-07 13:40:33 [[31merror[39m] : Error: Failed to create order. Please try again later.
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:91:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:41:39 [[31merror[39m] : ValidationError: Subscription validation failed: notes.membershipType: `silver` is not a valid enum value for path `notes.membershipType`.
+    at Document.invalidate (D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3362:32)
+    at D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3123:17
+    at D:\Connectly\Backend\node_modules\mongoose\lib\schemaType.js:1420:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)
+2025-11-07 13:41:39 [[31merror[39m] : Error: Failed to create order. Please try again later.
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:91:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:42:01 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:42:01 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:42:03 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:42:03 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:42:06 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:42:06 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:42:06 [[31merror[39m] : ValidationError: Subscription validation failed: notes.membershipType: `silver` is not a valid enum value for path `notes.membershipType`.
+    at Document.invalidate (D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3362:32)
+    at D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3123:17
+    at D:\Connectly\Backend\node_modules\mongoose\lib\schemaType.js:1420:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)
+2025-11-07 13:42:06 [[31merror[39m] : Error: Failed to create order. Please try again later.
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:93:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:42:37 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:42:37 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:42:41 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:42:41 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:42:43 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:42:43 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:42:46 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:42:46 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:42:51 [[31merror[39m] : Error: Invalid membership type provided
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:17:15)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:16:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:42:51 [[31merror[39m] : Error: Invalid membership type provided
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:17:15)
+    at Layer.handleRequest (D:\Connectly\Backend\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Connectly\Backend\node_modules\router\lib\route.js:157:13)
+    at protect (file:///D:/Connectly/Backend/src/middleware/auth.middleware.js:16:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:43:20 [[31merror[39m] : ValidationError: Subscription validation failed: notes.membershipType: `silver` is not a valid enum value for path `notes.membershipType`.
+    at Document.invalidate (D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3362:32)
+    at D:\Connectly\Backend\node_modules\mongoose\lib\document.js:3123:17
+    at D:\Connectly\Backend\node_modules\mongoose\lib\schemaType.js:1420:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)
+2025-11-07 13:43:20 [[31merror[39m] : Error: Failed to create order. Please try again later.
+    at createOrder (file:///D:/Connectly/Backend/src/controllers/subscription.js:93:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-07 13:44:05 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:44:05 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:44:10 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:44:10 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:44:17 [[32minfo[39m] : Order created successfully
+2025-11-07 13:46:09 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:46:09 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:46:12 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:46:12 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:46:31 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:46:31 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:49:43 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:49:43 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:50:12 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:50:12 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:51:20 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:51:20 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:51:30 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:51:30 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:52:00 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:52:00 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:52:05 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:52:05 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:56:20 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:56:20 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:56:24 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:56:24 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:56:27 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:56:27 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:56:30 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:56:30 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:56:35 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:56:37 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:56:37 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:57:18 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:57:18 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:59:11 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:59:11 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:59:30 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:59:30 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:59:36 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:59:36 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 13:59:54 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 13:59:54 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 14:05:37 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 14:05:38 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 14:06:37 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 14:06:37 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 14:07:06 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 14:07:06 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 14:07:33 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 14:07:33 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 14:07:47 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 14:07:47 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 14:08:21 [[32minfo[39m] : Order created successfully
+2025-11-07 14:10:23 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 14:10:23 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 14:10:51 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 14:10:51 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 14:11:06 [[32minfo[39m] : Order created successfully
+2025-11-07 14:12:01 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 14:12:01 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 14:12:08 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 14:12:08 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 14:21:28 [[32minfo[39m] : Order created successfully
+2025-11-07 14:22:44 [[32minfo[39m] : Order created successfully
+2025-11-07 14:29:07 [[32minfo[39m] : Order created successfully
+2025-11-07 14:29:21 [[32minfo[39m] : Order created successfully
+2025-11-07 15:08:10 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 15:08:10 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 15:09:19 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 15:09:19 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 15:09:48 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 15:09:48 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 15:09:51 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 15:09:51 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 15:10:03 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 15:10:04 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 15:10:09 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 15:10:09 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 15:10:20 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 15:10:20 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 15:10:25 [[32minfo[39m] : Order created successfully
+2025-11-07 15:13:11 [[32minfo[39m] : Order created successfully
+2025-11-07 15:13:37 [[32minfo[39m] : Order created successfully
+2025-11-07 15:14:03 [[32minfo[39m] : Order created successfully
+2025-11-07 15:14:14 [[32minfo[39m] : Order created successfully
+2025-11-07 15:14:39 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 15:14:39 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 15:14:44 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 15:14:44 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 15:14:45 [[32minfo[39m] : Order created successfully
+2025-11-07 15:15:07 [[32minfo[39m] : Order created successfully
+2025-11-07 15:16:39 [[32minfo[39m] : Order created successfully
+2025-11-07 15:17:11 [[32minfo[39m] : Server is running on port 5000
+2025-11-07 15:17:11 [[32minfo[39m] : MongoDB connected successfully
+2025-11-07 15:17:47 [[32minfo[39m] : Order created successfully
+2025-11-07 15:19:00 [[32minfo[39m] : Order created successfully
+2025-11-07 15:20:38 [[32minfo[39m] : Order created successfully
