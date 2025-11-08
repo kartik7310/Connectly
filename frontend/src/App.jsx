@@ -10,6 +10,7 @@ import Feed from "./pages/feed"
 import Connections from "./pages/Connections"
 import ConnectionRequest from "./pages/ConnectionRequest"
 import Premium from "./pages/premium"
+import Chat from "./pages/Chat"
 function App() {
  return(
  <>
@@ -21,9 +22,11 @@ function App() {
     <Route path="/" element={<Body/>}>
     <Route path="/login" element={<Login/>}/>
     <Route path="/signup" element={<Signup/>}/>
+    <Route path="/profile" element={<Profile/>}/>
     <Route path="/premium" element={<Premium/>}/>
     <Route path="/feed" element={<Feed/>}/>
     <Route path="/connections" element={<Connections/>}/>
+    <Route path="/chat/:targetUserId" element={<Chat/>}/>
     <Route path="/request-connection" element={<ConnectionRequest/>}/>
     </Route>
   </Routes>

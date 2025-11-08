@@ -57,7 +57,7 @@ const premium = () => {
 
 
   return (
-    <div className='flex justify-center gap-6 m-5'>
+    <div className="flex flex-col sm:flex-row justify-center gap-6 m-5">
 
       {/* Silver */}
       <Pricing 

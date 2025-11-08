@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import UserConnection from "../services/userService"
 import { useDispatch, useSelector } from 'react-redux'
 import { addConnection } from '../store/store-slices/connectionSlice'
+import { Link } from 'react-router-dom';
 
 const Connections = () => {
   const connections = useSelector((state) => state.connection?.connections || state.connection || []);
@@ -74,6 +75,11 @@ const Connections = () => {
                 )}
 
                
+              </div>
+              <div>
+               <Link to={`/chat/${user._id}`}>
+               <button className="btn btn-sm btn-error btn-outline rounded-full">Message</button>
+               </Link>
               </div>
             </div>
           </div>

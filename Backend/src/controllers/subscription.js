@@ -90,6 +90,8 @@ const SubscriptionController = {
       );
     }
   },
+  
+  //after deploy app have to setup webhook for verification
   async verifyPaymentWebhook(req, res, next) {
     try {
       const signature = req.get["x-razorpay-signature"]

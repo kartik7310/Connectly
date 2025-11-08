@@ -10,7 +10,9 @@ import cookieParser from "cookie-parser";
 import globalErrorHandler from "./middleware/errorMiddleware.js"
 import ConnectionRoutes from "./routes/connection.routes.js"
 import SubscriptionRoutes from "./routes/subscription.routes.js"
+import { createServer } from 'node:http';
 const app = express();
+
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -22,6 +24,7 @@ app.use(cors({
 
 
 import './config/db.js';
+import  intitlizeSocket from "./webSocket/socket.js";
 
 
 
@@ -35,6 +38,8 @@ app.use('/api/v1/profile',ProfileRoutes );
 app.use('/api/v1/connections', ConnectionRoutes);
 app.use('/api/v1/payment', SubscriptionRoutes);
 
+const server = createServer(app);
+intitlizeSocket(server)
 app.use(globalErrorHandler);
 connectDB().then(() => {
   logger.info("MongoDB connected successfully");
@@ -44,7 +49,7 @@ connectDB().then(() => {
 
 
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   logger.info(`Server is running on port ${PORT}`);
 });
 

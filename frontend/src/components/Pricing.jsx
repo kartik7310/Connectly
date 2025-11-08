@@ -2,7 +2,7 @@ import React from 'react'
 
 const Pricing = ({isPremium,clickHandle,title, price, features, disabledFeatures}) => {
   return (
-    <div className="card w-96 bg-base-100 shadow-sm">
+    <div className="flex sm:flex-row justify-center gap-10 m-5">
       <div className="card-body">
         <span className="badge badge-xs badge-warning">{title === "Gold" ? "Most Popular" : ""}</span>
 
