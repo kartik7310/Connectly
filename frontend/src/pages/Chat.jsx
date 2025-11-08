@@ -9,10 +9,7 @@ const Chat = () => {
 
   const {_id:userId,firstName} = userData
   const { targetUserId } = useParams();
-  const [messages, setMessages] = useState([
-    { role: "system", chat: `this is chat page ${targetUserId}` },
-    { role: "user", chat: `this is chat page ${targetUserId}` },
-  ]);
+  const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState("");
   const endRef = useRef(null);
 
@@ -26,8 +23,11 @@ const Chat = () => {
       targetUserId,
       text,
     })
+    
+    setInputMessage("");
   };
  
+  
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages.length]);
@@ -41,6 +41,9 @@ const Chat = () => {
 
     socket.on("receiveMessage",({firstName,text})=>{
     console.log(firstName,":" ,text);
+    console.log("messafes",{firstName,text});
+    
+    setMessages((messages)=>[...messages,{firstName,text}])
     
   })
    //disconnect connection when component unmount
@@ -54,13 +57,13 @@ const Chat = () => {
       <div className="mx-auto max-w-3xl px-3 sm:px-4 lg:px-0 flex flex-col h-[calc(100vh-160px)]">
 
         <div className="flex-1 overflow-y-auto overscroll-contain rounded-md sm:rounded-xl border border-gray-700  bg-gray-800/40 p-3 sm:p-5 text-gray-100 space-y-3 sm:space-y-4">
-          {messages.map((m, i) => (
+          {messages?.map((m, i) => (
             <div
               key={i}
               className={`max-w-[85%] sm:max-w-[75%] w-fit rounded-2xl px-4 py-2 text-sm sm:text-base leading-relaxed
                 ${m.role === "user" ? "ml-auto bg-blue-600/80" : "bg-gray-900/80"}`}
             >
-              {m.chat}
+              {m.text}
             </div>
           ))}
           <div ref={endRef} />

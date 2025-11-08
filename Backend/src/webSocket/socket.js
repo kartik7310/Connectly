@@ -1,4 +1,6 @@
 import { Server } from "socket.io";
+import { secretRoomId } from "../utils/roomSecret.js";
+
 
 
  const intitlizeSocket = (server) =>{
@@ -14,14 +16,15 @@ import { Server } from "socket.io";
 
     //handle events
     socket.on("joinChat",({userId,targetUserId,firstName})=>{
-    const roomId = [userId,targetUserId].sort().join("_");
+    // const roomId = [userId,targetUserId].sort().join("_");
+   const roomId =  secretRoomId({userId,targetUserId})
     console.log(`${firstName} join the room with id ${roomId}`);
     
      socket.join(roomId)
      
     })
     socket.on("send-message",({firstName,userId,targetUserId,text})=>{
-       const roomId = [userId,targetUserId].sort().join("_");
+       const roomId = secretRoomId({userId,targetUserId})
        console.log(firstName + " " + text);
        
         io.to(roomId).emit("receiveMessage",{firstName,text })
