@@ -27,6 +27,9 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Password is required"],
       minLength: [6, "Password must be at least 6 characters long"],
+       required: function () {
+        return this.provider === "local";
+      },
       
     },
     age: { type: Number, min: [18, "User must be at least 18 years old"] },
@@ -46,11 +49,9 @@ const userSchema = new mongoose.Schema(
     photoUrl: {
       type: String,
       default: "https://geographyandyou.com/images/user-profile.png",
-      validate: {
-        validator: (v) => /^https?:\/\/.+\.(jpg|jpeg|png|webp|svg)?$/.test(v),
-        message: "Please enter a valid image URL",
-      },
+      
     },
+    authProvider: { type: String, enum: ["local", "google"], default: "local" },
     role: { type: String, enum: ["user", "admin"], default: "user" },
     isVerified: { type: Boolean, default: false },
     isPremium: { type: Boolean, default: false },

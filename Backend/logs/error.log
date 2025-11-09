@@ -1,0 +1,8 @@
+2025-11-09 15:22:46 [[31merror[39m] : ReferenceError: err is not defined
+    at googleLogin (file:///D:/Connectly/Backend/src/controllers/auth.js:127:43)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-09 15:24:30 [[31merror[39m] : Login failed
+2025-11-09 15:24:30 [[31merror[39m] : ReferenceError: image is not defined
+    at googleLogin (file:///D:/Connectly/Backend/src/controllers/auth.js:99:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-09 15:29:22 [[31merror[39m] : token not verify

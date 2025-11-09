@@ -45,6 +45,24 @@ class AuthService {
     throw new Error(serverMsg || "Invalid credentials");  
         }
     }
+     async googleLoginAccount(idToken) {
+        try {
+            const res = await axios.post(
+                this.baseUrl + apiEndpoints.googleLogin,
+                {
+                   idToken
+                },
+                {
+                    withCredentials: true,
+                }
+            );
+
+            return res;
+        } catch (err) {
+           const serverMsg = err?.response?.data?.message || err?.response?.data?.error;
+    throw new Error(serverMsg || "Invalid credentials");  
+        }
+    }
 
    
     async logout(){

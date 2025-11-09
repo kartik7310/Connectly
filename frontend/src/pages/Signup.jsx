@@ -5,7 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import Auth from "../services/authService";
-
+import { GoogleLogin } from "@react-oauth/google";
 export default function Signup() {
   const {
     register,
@@ -43,6 +43,35 @@ export default function Signup() {
       );
     }
   };
+
+    const handleSuccess = async (credentialResponse) => {
+      const idToken = credentialResponse?.credential;
+   
+      
+      if (!idToken) {
+        toast.error("Google login failed: Missing credential token");
+        return;
+      }
+      try {
+      
+        const response = await Auth.googleLoginAccount(idToken);
+        console.log("res", response);
+        toast.success(response.data?.message || "Google signup successful!");
+        navigate("/feed", { replace: true });
+      } catch (error) {
+        const message =
+          error?.response?.data?.message ||
+          error?.message ||
+          "Google signup failed. Please try again.";
+        toast.error(message);
+        console.error("signup failed:", error);
+      }
+    };
+  
+    const handleError = () => {
+      toast.error("Google signup failed. Please try again.");
+      console.error("Google signup failed");
+    };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-900">
@@ -170,7 +199,24 @@ export default function Signup() {
             {isSubmitting ? "Creating..." : "Sign up"}
           </button>
         </form>
-
+                     {/* OR Divider */}
+                 <div className="flex items-center my-6 gap-4">
+                   <span className="flex-grow h-px bg-indigo-700"></span>
+                   <span className="text-indigo-400 font-semibold">OR</span>
+                   <span className="flex-grow h-px bg-indigo-700"></span>
+                 </div>
+         
+                 {/* Google Login */}
+         <div className="w-full flex justify-center">
+           <GoogleLogin
+             onSuccess={handleSuccess}
+             onError={handleError}
+             size="medium"
+             type="standard"
+             shape="rectangular"
+             theme="filled_blue"
+           />
+         </div>
         <p className="text-sm text-center mt-3">
           Already have an account?{" "}
           <Link className="text-blue-600" to="/login">

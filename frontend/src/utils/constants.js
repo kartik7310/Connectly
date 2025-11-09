@@ -3,6 +3,7 @@ export const baseUrl = "http://localhost:5000/api/v1";
 export const apiEndpoints = {
   signUp: "/auth/signup",
   login: "/auth/login",
+  googleLogin: "/auth/google-login",
   logout: "/auth/logout",
   getFeed:"/user/feed",
    Profile:"/profile/view",
