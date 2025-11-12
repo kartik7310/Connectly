@@ -14,6 +14,8 @@ import Homepage from "./pages/landingPage"
 import Blog from "./pages/blog"
 import BlogDetails from "./pages/BlogDetails"
 import WriteBlog from "./pages/WriteBlog"
+import { Edit } from "lucide-react"
+import EditBlog from "./pages/EditBlog"
 function App() {
  return(
  <Provider store={store}>
@@ -32,6 +34,7 @@ function App() {
          <Route path="request-connection" element={<ConnectionRequest/>}/>
          <Route path="blogs" element={<Blog/>}/>
          <Route path="blogs/write-blog" element={<WriteBlog/>}/>
+         <Route path="blogs/edit-blog/:blogId" element={<EditBlog/>}/>
          <Route path="blogs/:blogId" element={<BlogDetails/>}/>
        </Route>
      </Routes>

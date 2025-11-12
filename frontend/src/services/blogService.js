@@ -39,6 +39,8 @@ class BlogService {
   }
 
   async updateBlog(blogId, blogPayload) {
+
+    
     try {
       const url = `${this.baseUrl}${apiEndpoints.updateBlog.replace(":blogId",blogId)}`;
       const res = await axios.patch(url, blogPayload, {

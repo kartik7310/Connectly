@@ -1,29 +1,34 @@
-// AddBlog.js
+// BlogForm.js
 import React, { useRef, useState } from "react";
 import JoditEditor from "jodit-react";
 import blogService from "../services/blogService";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
-export default function AddBlog() {
+export default function BlogForm({ initialData = null, onSuccess }) {
   const editor = useRef(null);
-
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [tagsText, setTagsText] = useState("");
+const navigate = useNavigate();
+  
+  const [title, setTitle] = useState(initialData?.title || "");
+  const [content, setContent] = useState(initialData?.content || "");
+  const [tagsText, setTagsText] = useState(initialData?.tags?.join(", ") || "");
   const [publishedAt, setPublishedAt] = useState(
-    new Date().toISOString().slice(0, 16)
+    initialData?.publishedAt
+      ? new Date(initialData.publishedAt).toISOString().slice(0, 16)
+      : new Date().toISOString().slice(0, 16)
   );
 
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
 
- 
+  const isEditMode = !!initialData;
+  
+
   async function getImageKitAuth() {
     try {
-      const res = await blogService.getImageKitAuth(); 
-      
+      const res = await blogService.getImageKitAuth();
 
       const payload = res?.data ?? res;
       const auth = payload?.data ?? payload;
@@ -40,7 +45,6 @@ export default function AddBlog() {
       throw new Error(msg);
     }
   }
-
 
   async function uploadToImageKit(file) {
     setUploadingImage(true);
@@ -69,22 +73,18 @@ export default function AddBlog() {
           timeout: 60000,
         }
       );
-    
-      
-          
-      if (!uploadRes?.status || uploadRes?.status !== 200){
-         throw new Error(data.message || "ImageKit upload failed");
-     }
-        
+
+      if (!uploadRes?.status || uploadRes?.status !== 200) {
+        throw new Error(data.message || "ImageKit upload failed");
+      }
 
       const data = uploadRes?.data ?? uploadRes;
-     
+
       return data.url;
     } finally {
       setUploadingImage(false);
     }
   }
-
 
   const handleFileChange = (e) => {
     setFile(e.target.files?.[0] ?? null);
@@ -95,13 +95,11 @@ export default function AddBlog() {
     setLoading(true);
 
     try {
-      let blogImageUrl = "";
+      let blogImageUrl = initialData?.blogImage || "";
 
       if (file) {
         try {
           blogImageUrl = await uploadToImageKit(file);
-          
-           // returns string URL
         } catch (err) {
           console.error("Image upload failed:", err);
           alert("Image upload failed: " + (err.message || ""));
@@ -115,7 +113,6 @@ export default function AddBlog() {
         .map((t) => t.trim())
         .filter(Boolean);
 
-      
       const payload = {
         title: title.trim(),
         content,
@@ -127,16 +124,30 @@ export default function AddBlog() {
         payload.blogImage = blogImageUrl;
       }
 
-      const res = await blogService.createBlog(payload);
+      let res;
+      if (isEditMode) {
+        res = await blogService.updateBlog(initialData._id, payload);
 
-      toast.success("Blog created successfully");
-    
-      // reset form
-      setTitle("");
-      setContent("");
-      setTagsText("");
-      setPublishedAt(new Date().toISOString().slice(0, 16));
-      setFile(null);
+          toast.success("Blog updated successfully");
+      
+      } else {
+        res = await blogService.createBlog(payload);
+         navigate("/blogs")
+          toast.success("Blog created successfully");
+      
+      }
+
+      if (onSuccess) {
+        onSuccess(res);
+      }
+
+      if (!isEditMode) {
+        setTitle("");
+        setContent("");
+        setTagsText("");
+        setPublishedAt(new Date().toISOString().slice(0, 16));
+        setFile(null);
+      }
     } catch (err) {
       console.error(err);
       alert(
@@ -151,11 +162,15 @@ export default function AddBlog() {
     readonly: false,
     height: 400,
     placeholder: "Write your blog content here...",
+    style: {
+      background: "#ffffff",
+      color: "#000000",
+    },
   };
 
   return (
     <div style={{ maxWidth: 800, margin: "0 auto", padding: 16 }}>
-      <h2>Write Blog</h2>
+      <h2>{isEditMode ? "Edit Blog" : "Write Blog"}</h2>
 
       <form onSubmit={handleSubmit} style={{ display: "grid", gap: 12 }}>
         <label>
@@ -193,6 +208,11 @@ export default function AddBlog() {
         <label>
           Image (optional) — will upload to ImageKit
           <input type="file" accept="image/*" onChange={handleFileChange} />
+          {initialData?.blogImage && !file && (
+            <div style={{ fontSize: 13, marginTop: 4 }}>
+              Current: {initialData.blogImage.split("/").pop()}
+            </div>
+          )}
           {file && <div style={{ fontSize: 13 }}>Selected: {file.name}</div>}
           {uploadingImage && (
             <div style={{ fontSize: 13 }}>Uploading image…</div>
@@ -214,7 +234,7 @@ export default function AddBlog() {
           disabled={loading || uploadingImage}
           style={{ padding: "10px 16px" }}
         >
-          {loading ? "Submitting…" : "Submit Blog"}
+          {loading ? "Submitting…" : isEditMode ? "Update Blog" : "Submit Blog"}
         </button>
       </form>
     </div>

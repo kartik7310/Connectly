@@ -495,3 +495,13 @@
 2025-11-12 13:26:02 [[32minfo[39m] : MongoDB connected successfully
 2025-11-12 14:18:58 [[33mwarn[39m] : Validation failed on createBlog request
 2025-11-12 14:18:59 [[31merror[39m] : Error: Validation failed: content: Too small: expected string to have >=2 characters
+2025-11-12 14:52:16 [[32minfo[39m] : Server is running on port 5000
+2025-11-12 14:52:16 [[32minfo[39m] : MongoDB connected successfully
+2025-11-12 14:54:30 [[32minfo[39m] : Google login success
+2025-11-12 15:24:11 [[31merror[39m] : Error: Invalid blog id
+2025-11-12 15:40:56 [[31merror[39m] : Error: Invalid blog id
+2025-11-12 15:41:36 [[31merror[39m] : Error: Invalid blog id
+2025-11-12 15:49:59 [[31merror[39m] : Error: Invalid blog id
+2025-11-12 15:52:22 [[31merror[39m] : Error: Invalid blog id
+2025-11-12 15:54:18 [[33mwarn[39m] : updateBlog: Forbidden user=69106814452a3ba7d34a5815 blog.author=6912e6a7365ee25c07a96ba5
+2025-11-12 15:54:18 [[31merror[39m] : Error: You are not allowed to update this blog

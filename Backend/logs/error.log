@@ -130,3 +130,9 @@
 2025-11-12 13:14:53 [[31merror[39m] : Error: Validation failed: blogImage: blogImage must be a valid URL
 2025-11-12 13:19:53 [[31merror[39m] : Error: Validation failed: blogImage: blogImage must be a valid URL
 2025-11-12 14:18:59 [[31merror[39m] : Error: Validation failed: content: Too small: expected string to have >=2 characters
+2025-11-12 15:24:11 [[31merror[39m] : Error: Invalid blog id
+2025-11-12 15:40:56 [[31merror[39m] : Error: Invalid blog id
+2025-11-12 15:41:36 [[31merror[39m] : Error: Invalid blog id
+2025-11-12 15:49:59 [[31merror[39m] : Error: Invalid blog id
+2025-11-12 15:52:22 [[31merror[39m] : Error: Invalid blog id
+2025-11-12 15:54:18 [[31merror[39m] : Error: You are not allowed to update this blog
