@@ -18,6 +18,7 @@ export const apiEndpoints = {
   createBlog:"/blogs/create",
   updateBlog:"/blogs/update/:blogId",
   deleteBlog:"/blogs/delete/:blogId",
+  imagekitAuth:"/blogs/imagekit-auth"
 
 };
 

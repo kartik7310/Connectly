@@ -59,9 +59,9 @@ const EditProfile = () => {
                 Edit Profile
               </button>
             )}
+         
           </div>
         </div>
-
         {/* Right */}
         <div className="lg:col-span-2 card bg-base-100 shadow p-6">
           {isEditing ? (
@@ -87,9 +87,10 @@ const EditProfile = () => {
               <p>about: {user?.about || "-"}</p>
               <p>Age: {user?.age || "-"}</p>
             </div>
+            
           )}
         </div>
-
+        
       </div>
     </div>
   );

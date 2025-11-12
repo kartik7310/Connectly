@@ -1,4 +1,5 @@
 import React from "react";
+import { stripHtml } from "../utils/htmlparser";
 
 const BlogCard = ({ blog }) => {
   const { title, content, blogImage, tags } = blog || {};
@@ -20,9 +21,11 @@ const BlogCard = ({ blog }) => {
           {title || "Untitled Blog"}
         </h2>
 
-        <p className="text-gray-600 text-sm line-clamp-3 mb-4">
-          {content ? `${content.slice(0, 80)}... Read More` : "No content available."}
-        </p>
+      <p className="text-gray-600 text-sm line-clamp-3 mb-4">
+  {content
+    ? `${stripHtml(content).slice(0, 80)}... Read More`
+    : "No content available."}
+</p>
 
         {/* Tags section */}
        <div className="card-actions justify-center flex-wrap gap-2 mt-3">

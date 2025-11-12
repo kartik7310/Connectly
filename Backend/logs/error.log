@@ -127,3 +127,6 @@
 2025-11-11 13:32:41 [[31merror[39m] : Error: No blogs found
 2025-11-11 13:33:17 [[31merror[39m] : Error: Blog not found
 2025-11-11 13:34:17 [[31merror[39m] : Error: No blogs found
+2025-11-12 13:14:53 [[31merror[39m] : Error: Validation failed: blogImage: blogImage must be a valid URL
+2025-11-12 13:19:53 [[31merror[39m] : Error: Validation failed: blogImage: blogImage must be a valid URL
+2025-11-12 14:18:59 [[31merror[39m] : Error: Validation failed: content: Too small: expected string to have >=2 characters

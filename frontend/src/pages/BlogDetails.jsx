@@ -5,6 +5,7 @@ import BlogService from "../services/blogService";
 import { Trash2 } from "lucide-react";
 import AuthorInfo from "../components/Author";
 import { useSelector } from "react-redux";
+import { stripHtml } from "../utils/htmlparser";
 
 const BlogDetails = () => {
     const user = useSelector((state) => state.auth?.user);
@@ -45,9 +46,12 @@ const BlogDetails = () => {
         className="w-full h-64 object-cover rounded-xl mb-6"
       />
       <h1 className="text-3xl font-semibold mb-3">{blog.title}</h1> 
-      <h2>Read ~ 5 min</h2>
+      <div className="flex justify-between ">
+         <h2 className="text-gray-300 font-bold">Read ~ 5 min</h2>
+         <h3 className="text-gray-600">published At :<span className="text-blue-400">{new Date(blog.createdAt).toDateString()}</span></h3>
+      </div>
 
-      <p className="text-gray-600 leading-relaxed mb-6">{blog.content}</p>
+      <p className="text-gray-600 leading-relaxed mb-6 mt-2">{stripHtml(blog.content)}</p>
 
       <div className="flex flex-wrap gap-2 mt-4">
         {Array.isArray(blog.tags) && blog.tags.length > 0 ? (
@@ -63,7 +67,9 @@ const BlogDetails = () => {
           <span className="text-sm text-gray-400 italic">No tags</span>
         )}
       </div>
-      <AuthorInfo author={blog.author}/>
+
+       <AuthorInfo author={blog.author}/>
+    
        
     </div>
   );  

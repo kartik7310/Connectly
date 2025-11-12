@@ -1,3 +1,4 @@
+import imagekit from "../config/imagekit.js";
 import logger from "../config/logger.js";
 import BlogService from "../services/blog.js";
 import AppError from "../utils/AppError.js";
@@ -126,6 +127,23 @@ const BlogController = {
       next(error);
     }
   },
+
+  async ImagekitVerification(req,res,next){
+    try {
+     const authParams = imagekit.getAuthParameters?.() || imagekit.getAuthenticationParameters?.();
+      if(!authParams){
+        logger.warn("Imagekit verification failed")
+        return next(new AppError("Something went wrong",500))
+
+      }
+      return res.status(200).json({
+        success:true,
+        data:authParams
+      })
+    } catch (error) {
+      next(error)
+    }
+  }
 };
 
 export default BlogController;

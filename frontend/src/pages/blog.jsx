@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import BlogService from "../services/blogService";
 import { setBlogs } from "../store/store-slices/blogSlice";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 const Blog = () => {
   const dispatch = useDispatch();
+    const navigate = useNavigate();
   const blogs = useSelector((state) => state.blogs?.blogs ?? []);
 
   const [loading, setLoading] = useState(false);
@@ -95,6 +96,7 @@ const Blog = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       {/* Search + Tag filters */}
+      
       <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <fieldset className="w-full sm:w-1/2">
           <input
@@ -108,7 +110,14 @@ const Blog = () => {
             placeholder="Search blogs by title or content..."
           />
         </fieldset>
-
+         <div>
+         <button
+      className="btn btn-primary btn-block"
+      onClick={() => navigate("/blogs/write-blog")}
+    >
+      Write Blog
+    </button>
+      </div>
         <div className="flex items-center flex-wrap gap-2">
           {availableTags.length > 0 ? (
             availableTags.map((tag) => {

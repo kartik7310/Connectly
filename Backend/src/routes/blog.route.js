@@ -10,6 +10,7 @@ router.get("/fetch", BlogController.getAllBlogs);
 router.get("/fetch/:blogId", BlogController.fetchSingleBlog);
 router.patch("/update/:blogId",protect, BlogController.updateBlog);
 router.delete("/delete/:blogId", protect,BlogController.deleteBlog);
+router.get("/imagekit-auth", protect,BlogController.ImagekitVerification );
 
 
 

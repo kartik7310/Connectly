@@ -69,6 +69,26 @@ class BlogService {
       );
     }
   }
+
+  async getImageKitAuth(token) {
+  const url = `${this.baseUrl}${apiEndpoints.imagekitAuth}`;
+  try {
+    const res = await axios.get(url, {
+  withCredentials:true,
+    timeout: 15000,
+    });
+    
+    
+    return res?.data
+  } catch (err) {
+    const serverMsg =
+      err?.response?.data?.message || err?.response?.data?.error || err.message;
+    throw new Error(
+      serverMsg || "Something went wrong while fetching ImageKit auth params"
+    );
+  }
+}
+ 
   async deleteBlog(blogId) {
     try {
       const url = `${this.baseUrl}${apiEndpoints.deleteBlog.replace(":blogId",blogId)}`;
@@ -87,4 +107,5 @@ class BlogService {
 
   
 }
+
 export default new BlogService(baseUrl);

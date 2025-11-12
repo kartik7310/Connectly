@@ -13,6 +13,7 @@ import Chat from "./pages/Chat"
 import Homepage from "./pages/landingPage"
 import Blog from "./pages/blog"
 import BlogDetails from "./pages/BlogDetails"
+import WriteBlog from "./pages/WriteBlog"
 function App() {
  return(
  <Provider store={store}>
@@ -30,6 +31,7 @@ function App() {
          <Route path="chat/:targetUserId" element={<Chat/>}/>
          <Route path="request-connection" element={<ConnectionRequest/>}/>
          <Route path="blogs" element={<Blog/>}/>
+         <Route path="blogs/write-blog" element={<WriteBlog/>}/>
          <Route path="blogs/:blogId" element={<BlogDetails/>}/>
        </Route>
      </Routes>
