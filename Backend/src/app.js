@@ -44,7 +44,7 @@ app.use('/api/v1/chat', ChatRoutes);
 app.use('/api/v1/blogs',BlogRoutes);
 
 app.get('/health',(req,res)=>{
-  res.status(200).json("server is running")
+  res.status(200).json("app is running")
 })
 const server = createServer(app);
 intitlizeSocket(server)
