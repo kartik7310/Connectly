@@ -47,7 +47,9 @@ app.get('/health',(req,res)=>{
   res.status(200).json("app is running")
 })
 const server = createServer(app);
+
 intitlizeSocket(server)
+
 app.use(globalErrorHandler);
 connectDB().then(() => {
   logger.info("MongoDB connected successfully");
