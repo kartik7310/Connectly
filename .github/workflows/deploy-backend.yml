@@ -23,13 +23,13 @@ jobs:
         run: |
           IMAGE=${{ secrets.DOCKER_USERNAME }}/connectly-backend
           TAG=$(echo "${GITHUB_SHA}" | cut -c1-8)
-          docker build \
-          -t $IMAGE:$TAG \
-          -t $IMAGE:latest \
-          -f Backend/Dockerfile \
-          Backend/
+
+          docker build -t $IMAGE:$TAG -f Backend/Dockerfile Backend/
+          docker push $IMAGE:$TAG
+
           docker tag $IMAGE:$TAG $IMAGE:latest
-          docker push $IMAGE:$TAG 
+          docker push $IMAGE:latest
+
           
 
       - name: Deploy to EC2
