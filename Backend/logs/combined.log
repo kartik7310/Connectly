@@ -513,3 +513,31 @@
 2025-11-12 16:35:01 [[32minfo[39m] : Fetched 0 connections for user: 69106814452a3ba7d34a5815
 2025-11-12 16:35:02 [[32minfo[39m] : Fetched 0 connection requests for user: 69106814452a3ba7d34a5815
 2025-11-12 16:35:16 [[32minfo[39m] : Order created successfully
+2025-11-17 17:20:39 [[32minfo[39m] : Server is running on port 5000
+2025-11-17 17:28:59 [[32minfo[39m] : Server is running on port 5000
+2025-11-17 17:29:00 [[32minfo[39m] : MongoDB connected successfully
+2025-11-17 17:31:55 [[32minfo[39m] : Google login success
+2025-11-17 17:31:58 [[32minfo[39m] : Connection request created from 691b0eb3869773714fa8257f → 6916b68604d6f30e6e05835c with status: interested
+2025-11-17 17:33:49 [[33mwarn[39m] : Connection request already exists between 691b0eb3869773714fa8257f and 6916b68604d6f30e6e05835c
+2025-11-17 17:33:49 [[31merror[39m] : Error creating connection request
+2025-11-17 17:33:49 [[31merror[39m] : Error: Connection request already exists
+2025-11-17 17:34:00 [[32minfo[39m] : Connection request created from 691b0eb3869773714fa8257f → 6916d64704d6f30e6e058362 with status: interested
+2025-11-17 17:34:05 [[32minfo[39m] : Fetched 0 connections for user: 691b0eb3869773714fa8257f
+2025-11-17 17:34:09 [[32minfo[39m] : Fetched 0 connection requests for user: 691b0eb3869773714fa8257f
+2025-11-17 17:34:12 [[32minfo[39m] : Fetched 0 connection requests for user: 691b0eb3869773714fa8257f
+2025-11-17 17:34:21 [[32minfo[39m] : Fetched 0 connections for user: 691b0eb3869773714fa8257f
+2025-11-17 17:34:29 [[32minfo[39m] : Fetched 0 connection requests for user: 691b0eb3869773714fa8257f
+2025-11-17 17:35:43 [[32minfo[39m] : Google login success
+2025-11-17 17:36:08 [[32minfo[39m] : Connection request created from 691b0f97869773714fa825ae → 6916b68604d6f30e6e05835c with status: ignored
+2025-11-17 17:36:48 [[32minfo[39m] : Fetched 0 connections for user: 691b0f97869773714fa825ae
+2025-11-17 17:37:30 [[32minfo[39m] : Connection request created from 691b0f97869773714fa825ae → 6916d64704d6f30e6e058362 with status: interested
+2025-11-17 17:38:15 [[32minfo[39m] : Connection request created from 691b0f97869773714fa825ae → 691b0eb3869773714fa8257f with status: ignored
+2025-11-17 17:39:26 [[32minfo[39m] : Google login success
+2025-11-17 17:39:43 [[32minfo[39m] : Connection request created from 691b1076869773714fa825d3 → 6916b68604d6f30e6e05835c with status: interested
+2025-11-17 17:45:51 [[32minfo[39m] : Connection request created from 691b1076869773714fa825d3 → 6916d64704d6f30e6e058362 with status: interested
+2025-11-17 17:46:02 [[32minfo[39m] : Connection request created from 691b1076869773714fa825d3 → 691b0eb3869773714fa8257f with status: ignored
+2025-11-17 17:46:06 [[32minfo[39m] : Connection request created from 691b1076869773714fa825d3 → 691b0f97869773714fa825ae with status: ignored
+2025-11-17 17:47:10 [[32minfo[39m] : Google login success
+2025-11-17 17:47:18 [[32minfo[39m] : Google login success
+2025-11-17 17:47:38 [[32minfo[39m] : Fetched 0 connections for user: 691b0eb3869773714fa8257f
+2025-11-17 17:47:39 [[32minfo[39m] : Fetched 0 connection requests for user: 691b0eb3869773714fa8257f
