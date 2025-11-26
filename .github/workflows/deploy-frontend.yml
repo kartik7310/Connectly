@@ -1,44 +1,44 @@
-# name: deploy-frontend
+name: deploy-frontend
 
-# on:
-#   push:
-#     branches:
-#       - main
-#     paths:
-#          - "frontend/**"
+on:
+  push:
+    branches:
+      - main
+    paths:
+         - "frontend/**"
 
-# jobs:
-#   build-and-deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout Repository
-#         uses: actions/checkout@v3 
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3 
 
-#       - name: Set up Node.js
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: 'latest' 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'latest' 
 
-#       - name: Install Dependencies
-#         # Change directory to the frontend project folder
-#         run: cd frontend && npm install
+      - name: Install Dependencies
+        # Change directory to the frontend project folder
+        run: cd frontend && npm install
         
-#       - name: Build Static Files
-#         # Run the build command (this should output to a folder like 'dist')
-#         run: cd frontend && npm run build 
+      - name: Build Static Files
+        # Run the build command (this should output to a folder like 'dist')
+        run: cd frontend && npm run build 
 
-#       - name: Configure AWS Credentials
-#         uses: aws-actions/configure-aws-credentials@v1
-#         with:
-#           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#           aws-region: ap-southeast-2
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-southeast-2
 
-#       - name: Deploy Static Site to S3 Bucket
-#         run: |
-#           aws s3 sync frontend/dist s3://connectly-frontend \
-#             --delete \
-#             --cache-control max-age=31536000,public 
-#           # Note: The 'frontend/dist' path assumes your build command above 
-#           # created a 'dist' directory inside the 'frontend' directory.
-#           # The --cache-control setting optimizes caching for static assets.
+      - name: Deploy Static Site to S3 Bucket
+        run: |
+          aws s3 sync frontend/dist s3://connectly-frontend \
+            --delete \
+            --cache-control max-age=31536000,public 
+          # Note: The 'frontend/dist' path assumes your build command above 
+          # created a 'dist' directory inside the 'frontend' directory.
+          # The --cache-control setting optimizes caching for static assets.

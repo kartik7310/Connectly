@@ -1,63 +1,63 @@
-# name: Deploy Backend
+name: Deploy Backend
 
-# on:
-#   push:
-#     branches: [main]
-#     paths:
-#       - "Backend/**"
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
+on:
+  push:
+    branches: [main]
+    paths:
+      - "Backend/**"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
-#       - name: Login to Docker Hub
-#         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      - name: Login to Docker Hub
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
-#       - name: Build and Push
-#         run: |
-#           docker build -t ${{ secrets.DOCKER_USERNAME }}/connectly-backend:latest -f Backend/Dockerfile Backend/
-#           docker push ${{ secrets.DOCKER_USERNAME }}/connectly-backend:latest
+      - name: Build and Push
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/connectly-backend:latest -f Backend/Dockerfile Backend/
+          docker push ${{ secrets.DOCKER_USERNAME }}/connectly-backend:latest
 
-#     # Deploy on your EC2 (self-hosted runner)
-#   deploy:
-#     runs-on: self-hosted
-#     needs: build
-#     steps:
-#       - name: Checkout (so we have a workspace path)
-#         uses: actions/checkout@v3
+    # Deploy on your EC2 (self-hosted runner)
+  deploy:
+    runs-on: self-hosted
+    needs: build
+    steps:
+      - name: Checkout (so we have a workspace path)
+        uses: actions/checkout@v3
 
-#       - name: Create .env from repo secrets
-#         run: |
-#           cat > $GITHUB_WORKSPACE/.env <<'EOF'
-#           RAZORPAY_API_KEY=${{ secrets.RAZORPAY_API_KEY }}
-#           RAZORPAY_KEY_SECRET=${{ secrets.RAZORPAY_KEY_SECRET }}
-#           GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
-#           GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}
-#           MONOGO_URL=${{ secrets.MONOGO_URL }}
-#           JWT_SECRET=${{ secrets.JWT_SECRET }}
-#           PORT=${{ secrets.PORT }}
-#           IMAGEKIT_PUBLIC_KEY=${{ secrets.IMAGEKIT_PUBLIC_KEY }}
-#           IMAGEKIT_PRIVATE_KEY=${{ secrets.IMAGEKIT_PRIVATE_KEY }}
-#           IMAGEKIT_URL_ENDPOINT=${{ secrets.IMAGEKIT_URL_ENDPOINT }}
-#           EOF
-#           # Optional: show where file saved
-#           echo "Wrote $GITHUB_WORKSPACE/.env (size: $(wc -c < $GITHUB_WORKSPACE/.env) bytes)"
+      - name: Create .env from repo secrets
+        run: |
+          cat > $GITHUB_WORKSPACE/.env <<'EOF'
+          RAZORPAY_API_KEY=${{ secrets.RAZORPAY_API_KEY }}
+          RAZORPAY_KEY_SECRET=${{ secrets.RAZORPAY_KEY_SECRET }}
+          GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}
+          MONOGO_URL=${{ secrets.MONOGO_URL }}
+          JWT_SECRET=${{ secrets.JWT_SECRET }}
+          PORT=${{ secrets.PORT }}
+          IMAGEKIT_PUBLIC_KEY=${{ secrets.IMAGEKIT_PUBLIC_KEY }}
+          IMAGEKIT_PRIVATE_KEY=${{ secrets.IMAGEKIT_PRIVATE_KEY }}
+          IMAGEKIT_URL_ENDPOINT=${{ secrets.IMAGEKIT_URL_ENDPOINT }}
+          EOF
+          # Optional: show where file saved
+          echo "Wrote $GITHUB_WORKSPACE/.env (size: $(wc -c < $GITHUB_WORKSPACE/.env) bytes)"
 
-#       - name: Pull latest image
-#         run: docker pull ${{ secrets.DOCKER_USERNAME }}/connectly-backend:latest
+      - name: Pull latest image
+        run: docker pull ${{ secrets.DOCKER_USERNAME }}/connectly-backend:latest
 
-#       - name: Stop old container
-#         run: docker stop my-app || true && docker rm my-app || true
+      - name: Stop old container
+        run: docker stop my-app || true && docker rm my-app || true
 
-#       - name: Run new container (using env-file)
-#         run: |
-#           docker run -d \
-#             --name my-app \
-#             --restart unless-stopped \
-#             --env-file $GITHUB_WORKSPACE/.env \
-#             -p 5000:5000 \
-#             ${{ secrets.DOCKER_USERNAME }}/connectly-backend:latest
+      - name: Run new container (using env-file)
+        run: |
+          docker run -d \
+            --name my-app \
+            --restart unless-stopped \
+            --env-file $GITHUB_WORKSPACE/.env \
+            -p 5000:5000 \
+            ${{ secrets.DOCKER_USERNAME }}/connectly-backend:latest
 
-#       - name: Cleanup
-#         run: docker image prune -af
+      - name: Cleanup
+        run: docker image prune -af
