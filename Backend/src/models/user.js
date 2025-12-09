@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { string } from "zod";
 
 const userSchema = new mongoose.Schema(
   {
@@ -25,12 +24,10 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: [true, "Password is required"],
       minLength: [6, "Password must be at least 6 characters long"],
-       required: function () {
-        return this.provider === "local";
+      required: function () {
+        return !this.authProvider || this.authProvider === "local";
       },
-      
     },
     age: { type: Number, min: [18, "User must be at least 18 years old"] },
     gender: {
@@ -55,7 +52,7 @@ const userSchema = new mongoose.Schema(
     role: { type: String, enum: ["user", "admin"], default: "user" },
     isVerified: { type: Boolean, default: false },
     isPremium: { type: Boolean, default: false },
-    membershipType :{type:string},
+    membershipType: { type: String },
     lastLogin: { type: Date },
   },
   { timestamps: true }

@@ -36,7 +36,7 @@ const AuthService = {
   async login(data) {
     const { email, password } = data;
     const user = await User.findOne({ email });
-    console.log("user",user);
+    logger.debug("Login attempt", { email });
     
    if (!user) {
    throw new AppError("Invalid credentials", 401);
@@ -49,7 +49,7 @@ const AuthService = {
     }
   
 
-    const token = generateToken(user._id, process.env.JWT_SECRET, '7d');
+    const token = generateToken(user._id);
      const { password: _, ...safeUser } = user.toObject();
     return {token ,user:safeUser};
   },
@@ -80,16 +80,16 @@ const AuthService = {
       password: undefined,
       photoUrl,
       isVerified: true,
-      provider: "google",
+      authProvider: "google",
     });
-  } else if (user.provider !== "google") {
-    user.provider = "google";
+  } else if (user.authProvider !== "google") {
+    user.authProvider = "google";
     user.photoUrl = photoUrl || user.photoUrl;
     await user.save();
   }
 
   // Generate token
-  const token = generateToken(user._id, process.env.JWT_SECRET, '7d');
+  const token = generateToken(user._id);
 
   return {
     token,
@@ -99,7 +99,7 @@ const AuthService = {
       firstName: user.firstName,
       lastName: user.lastName,
       photoUrl: user.photoUrl,
-      provider: user.provider,
+      authProvider: user.authProvider,
     },
   };
 }

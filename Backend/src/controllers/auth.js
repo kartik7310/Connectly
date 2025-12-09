@@ -1,6 +1,8 @@
 
+
 import logger from "../config/logger.js";
- import OTP from "../models/otp.js";
+import bcrypt from "bcrypt";
+import OTP from "../models/otp.js";
 import AuthService from "../services/auth.js";
 import AppError from "../utils/AppError.js";
 import { secureOtpGenerator } from "../utils/generateOtp.js";
@@ -95,6 +97,12 @@ async verifyOtp(req, res, next){
     otpRecord.isUsed = true;
     await otpRecord.save();
 
+    // Fetch user from database
+    const User = await import("../models/user.js").then(m => m.default);
+    const user = await User.findOne({ email });
+    if (!user) {
+      return next(new AppError("User not found", 404));
+    }
     
     // Generate JWT token
     const token = generateToken(user._id);
@@ -149,6 +157,8 @@ async verifyOtp(req, res, next){
 
 
     const { token,user } = await AuthService.login(parsed.data);
+     logger.info("token",token);
+    
 
  
     res
@@ -172,6 +182,7 @@ async verifyOtp(req, res, next){
     next(err);
   }
 },
+
 async googleLogin(req, res, next) {
   try {
     const { idToken } = req.body;
