@@ -26,9 +26,13 @@ const intitlizeSocket = (server) => {
     socket.on(
       "send-message",
       async ({ firstName, userId, targetUserId, text }) => {
-    
+       
         try {
           const roomId = secretRoomId({ userId, targetUserId });
+          
+          //emit the message
+          io.to(roomId).emit("receiveMessage", { firstName, text });
+
           let chat = await Chat.findOne({
             participants: {
               $all: [userId, targetUserId],
@@ -51,7 +55,7 @@ const intitlizeSocket = (server) => {
           const ttlSeconds=60*60;
           await setDataInRedis(cacheKey,chat,ttlSeconds);
 
-          io.to(roomId).emit("receiveMessage", { firstName, text });
+          
         } catch (error) {
           logger.error(error.message);
         }
