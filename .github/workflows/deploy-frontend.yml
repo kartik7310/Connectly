@@ -31,7 +31,7 @@ jobs:
           VITE_GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           VITE_IMAGEKIT_PUBLIC_KEY: ${{ secrets.IMAGEKIT_PUBLIC_KEY }}
           VITE_IMAGEKIT_URL_ENDPOINT: ${{ secrets.IMAGEKIT_URL_ENDPOINT }}
-          VITE_RAZORPAY_KEY_ID: ${{ secrets.RAZORPAY_API_KEY }} 
+          VITE_RAZORPAY_KEY_ID: ${{ secrets.RAZORPAY_KEY_ID }} 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:

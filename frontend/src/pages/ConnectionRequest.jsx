@@ -9,6 +9,7 @@ const ConnectionRequest = () => {
   const request = useSelector((state) => state.request || [])
   
   const getRequestConnections = async () => {
+    
     try {
 
       if (request && request.length > 0) return
