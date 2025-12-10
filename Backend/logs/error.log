@@ -21,4 +21,11 @@
 2025-12-09 12:42:41 [[31merror[39m] : Error: Not authorized, token missing
 2025-12-09 12:42:51 [[31merror[39m] : Error: Not authorized, token missing
 2025-12-09 12:42:51 [[31merror[39m] : Error: Not authorized, token missing
-2
+22025-12-10 16:49:40 [[31merror[39m] : Key is required
+2025-12-10 16:50:00 [[31merror[39m] : Key is required
+2025-12-10 17:34:45 [[31merror[39m] : Value is required
+2025-12-10 17:35:32 [[31merror[39m] : Value is required
+2025-12-10 18:40:29 [[31merror[39m] : ttlSeconds is not defined
+2025-12-10 18:40:29 [[31merror[39m] : Error: Something went wrong
+2025-12-10 18:40:36 [[31merror[39m] : ttlSeconds is not defined
+2025-12-10 18:40:36 [[31merror[39m] : Error: Something went wrong

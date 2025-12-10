@@ -29,6 +29,10 @@ export const config = {
     keySecret: process.env.RAZORPAY_KEY_SECRET,
     webhookSecret: process.env.RAZORPAY_WEBHOOK_SECRET,
   },
+
+ //redis
+  redisUrl:process.env.REDIS_URL,
+
   
   // CORS - supports comma-separated origins
   corsOrigin: process.env.CORS_ORIGIN || 'http://localhost:5173',

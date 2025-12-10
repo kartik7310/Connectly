@@ -2,6 +2,7 @@
 import ChatService from "../services/chat.js"
 import AppError from "../utils/AppError.js";
 import logger from "../config/logger.js";
+import { getDataFromRedis, setDataInRedis } from "../helper/redisData.js";
 
 const ChatController = {
 
@@ -12,14 +13,35 @@ const ChatController = {
       
       const { targetUserId } = req.params;
       if(!targetUserId) return next(new AppError("Target user id is required",400))
+
+        //sort ids => user a -> user b and user b -> user a use same id
+        const sortedIds = [String(userId),String(targetUserId)].sort();
+        const cacheKey = `chats:${sortedIds[0]}:${sortedIds[1]}`;
+         
+      //cache hit
+        const cachedChat = await getDataFromRedis(cacheKey);
+        if (cachedChat) {
+          logger.info("Cache hit");
+          return res.status(200).json({
+            success: true,
+            data: cachedChat,
+          });
+        }
+        //db call
       const chat = await ChatService.getOneToOneChat({
         requesterId: userId,
         targetUserId,
       });
 
+       const responseData = chat?[chat]:[]
+
+      //set to redis
+      const ttlSeconds=60*60;
+      await setDataInRedis(cacheKey,chat,ttlSeconds);
+
       return res.status(200).json({
         success: true,
-        data: chat ? [chat] : [],
+        data: responseData,
       });
     } catch (err) {
     

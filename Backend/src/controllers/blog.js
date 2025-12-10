@@ -1,5 +1,6 @@
 import imagekit from "../config/imagekit.js";
 import logger from "../config/logger.js";
+import { getDataFromRedis, invalidateByPrefix, InvalidateCache, setDataInRedis } from "../helper/redisData.js";
 import BlogService from "../services/blog.js";
 import AppError from "../utils/AppError.js";
 import { blogSchema, updateBlogSchema } from "../validators/blog.js";
@@ -29,6 +30,8 @@ const BlogController = {
 
       const blog = await BlogService.createBlog(userId, blogPayload);
 
+      //cache invalidation
+       await invalidateByPrefix("blogs");
       return res.status(201).json({
         success: true,
         message: "Blog created successfully",
@@ -46,7 +49,23 @@ const BlogController = {
       const skip = (page - 1) * limit;
       const search = (req.query.search || "").trim();
 
+       const cacheKey = page || limit || skip || search ?`blogs:${page}:${limit}:${skip}:${search}` : "blogs";
+
+      const cachedBlogs = await getDataFromRedis(cacheKey);
+      
+       
+      if (cachedBlogs) {
+        logger.info("Cache hit");
+        return res.status(200).json({
+          success: true,
+          message: "Blogs fetched successfully",
+          data:cachedBlogs
+        });
+      }
       const blogs = await BlogService.getAllBlogs(skip, limit, search);
+      logger.info("Blogs fetched successfully", { blogs });
+      await setDataInRedis(cacheKey,blogs);
+      logger.info("Cache miss");
       return res.status(200).json({
         success: true,
         message: "Blogs fetched successfully",
@@ -63,7 +82,24 @@ const BlogController = {
       if(mongoose.isValidObjectId(blogId) === false) return next(new AppError("Invalid blog id", 400));
       
       if (!blogId) return next(new AppError("Blog id is required", 400));
+
+      const cacheKey = `blog:${blogId}`;
+
+      //fecth from redis
+      const cachedBlog = await getDataFromRedis(cacheKey);
+      if (cachedBlog) {
+        logger.info("Cache hit");
+        return res.status(200).json({
+          success: true,
+          message: "Blog fetched successfully",
+          data:cachedBlog
+        });
+      }
       const blog = await BlogService.fetchSingleBlog(blogId);
+
+      //set to redis
+      await setDataInRedis(cacheKey,blog);  
+      logger.info("Cache miss");
       return res.status(200).json({
         success: true,
         message: "Blog fetched successfully",
@@ -73,16 +109,22 @@ const BlogController = {
       next(error);
     }
   },
+
   async deleteBlog(req, res, next) {
     try {
       const blogId = req.params?.blogId;
        if(mongoose.isValidObjectId(blogId) === false) return next(new AppError("Invalid blog id", 400));
+
       const userId = req.user?._id;
       if (!blogId) {
         logger.warn("Blog id is required");
         return next(new AppError("Blog id is required", 400));
       }
       await BlogService.deleteBlog(blogId, userId);
+      
+      //cache invalidation
+      await InvalidateCache(`blog:${blogId}`);
+      await invalidateByPrefix("blog");
       return res.status(200).json({
         success: true,
         message: "blog deleted",
@@ -119,6 +161,10 @@ const BlogController = {
 
     const updated = await BlogService.updateBlog(blogId, userId, blogPayload);
 
+    //cache invalidation
+    await InvalidateCache(`blog:${blogId}`);
+    await invalidateByPrefix("blog");
+    
     return res.status(200).json({
       success: true,
       message: "Blog updated successfully",

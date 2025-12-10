@@ -27,6 +27,7 @@ const SubscriptionController = {
         amount: amount * 100,
         currency: "INR",
         receipt: `rcpt_${firstName}_${Date.now()}`,
+        payment_capture: 1,
         notes: {
           firstName,
           lastName,
@@ -137,6 +138,7 @@ const SubscriptionController = {
   async getSubscriptions(req, res, next) {
     try {
       const user = req.user.toJSON();
+      logger.info("getSubscriptions", { user });
       if (user.isPremium) {
         return res.status(200).json({ isPremium: true });
       }
