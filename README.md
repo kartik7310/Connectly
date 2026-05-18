@@ -8,6 +8,7 @@
 [![Node.js](https://img.shields.io/badge/Node.js-v18+-339933?style=flat&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![React](https://img.shields.io/badge/React-v19-61DAFB?style=flat&logo=react&logoColor=black)](https://reactjs.org/)
 [![Express](https://img.shields.io/badge/Express-v5.1-000000?style=flat&logo=express&logoColor=white)](https://expressjs.com/)
+[![Stripe](https://img.shields.io/badge/Stripe-Payments-635BFF?style=flat&logo=stripe&logoColor=white)](https://stripe.com/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=flat&logo=mongodb&logoColor=white)](https://www.mongodb.com/atlas)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind--CSS-v4-06B6D4?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=flat&logo=docker&logoColor=white)](https://www.docker.com/)
@@ -26,7 +27,7 @@ Connectly is a modern, full-stack real-time communication platform built for spe
 ✅ **Real-time Messaging** - WebSocket-powered instant chat with Socket.io  
 ✅ **Social Networking** - Connection requests and user discovery  
 ✅ **Content Management** - Blog creation and management system  
-✅ **Payment Integration** - Razorpay subscription and payment processing  
+✅ **Payment Integration** - stripe subscription and payment processing  
 ✅ **Media Optimization** - ImageKit integration for efficient media delivery  
 ✅ **Production Ready** - Comprehensive logging, error handling, and validation  
 
@@ -46,7 +47,7 @@ graph LR
     subgraph "Backend Services"
         API <--> DB[(MongoDB)]
         API <--> AI[Grok/LangChain]
-        API <--> Pay[Razorpay]
+        API <--> Pay[stripe]
         API <--> Media[ImageKit]
     end
     
@@ -78,7 +79,7 @@ Connectly's frontend is a sleek, responsive Single Page Application (SPA) design
 - 🟢 **Live Online/Offline Status** — Real-time user presence tracking  
 - 🔔 **Real-time In-App Notifications** — Instant alerts for messages and platform activities  
 - 🤖 **AI Assistant** — Integrated chatbot powered by Grok AI  
-- 💳 **Secure Payments** — Seamless and secure checkout using Razorpay  
+- 💳 **Secure Payments** — Seamless and secure checkout using stripe  
 - 📝 **Rich Content Editor** — Advanced blog creation and editing with Jodit React
 ### Project Structure
 
@@ -238,7 +239,7 @@ Client → Socket.io → Authenticate → Join Room → Send Message → Persist
 - **Service**: `subscription.js`
 - **Model**: `subscription.js`
 
-**Integration**: Razorpay API
+**Integration**: stripe API
 
 **Features**:
 - Create payment orders
@@ -258,7 +259,7 @@ Backend/
 │   │   ├── googleOauth.js   # Google OAuth client
 │   │   ├── imagekit.js      # ImageKit configuration
 │   │   ├── logger.js        # Winston logger setup
-│   │   └── razorpay.js      # Razorpay configuration
+│   │   └── stripe.js      # stripe configuration
 │   │
 │   ├── controllers/         # Request handlers
 │   │   ├── auth.js          # Authentication controller
@@ -685,8 +686,8 @@ PORT=5000
 MONGO_URI=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
 GOOGLE_CLIENT_ID=your_id
-RAZORPAY_KEY_ID=your_id
-RAZORPAY_KEY_SECRET=your_secret
+stripe_KEY_ID=your_id
+stripe_KEY_SECRET=your_secret
 IMAGEKIT_PUBLIC_KEY=your_key
 IMAGEKIT_PRIVATE_KEY=your_key
 IMAGEKIT_URL_ENDPOINT=your_url
@@ -731,7 +732,7 @@ VITE_SOCKET_URL=http://localhost:5000
 | **Authentication** | JWT + Google OAuth | Secure authentication |
 | **Validation** | Zod v4.1 | Schema validation |
 | **Logging** | Winston v3.18 | Application logging |
-| **Payments** | Razorpay v2.9 | Payment gateway |
+| **Payments** | stripe v2.9 | Payment gateway |
 | **Media** | ImageKit v6.0 | Image optimization and delivery |
 | **Security** | bcrypt v6.0 | Password hashing |
 | **DevOps** | Docker + Docker Compose | Containerization |
