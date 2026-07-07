@@ -80,6 +80,18 @@ const ConnectionService = {
       }
       connectionReq.status = status;
       await connectionReq.save();
+
+      if (status === "accepted") {
+        // Clean up any reverse or duplicate requests between these two users
+        await ConnectionRequest.deleteMany({
+          _id: { $ne: connectionReq._id },
+          $or: [
+            { fromUserId: connectionReq.fromUserId, toUserId: connectionReq.toUserId },
+            { fromUserId: connectionReq.toUserId, toUserId: connectionReq.fromUserId }
+          ]
+        });
+      }
+
       logger.info(`Connection request ${requestId} reviewed with status: ${status}`);
       return connectionReq;
     } catch (error) {

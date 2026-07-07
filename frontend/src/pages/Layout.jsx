@@ -52,12 +52,18 @@ export default function Layout() {
     // Initial notifications load
     fetchNotifications();
 
-    if (!socketRef.current) {
-      socketRef.current = createSocketConnection();
-      socketRef.current.emit("register-user", user._id);
-    }
+    const socket = createSocketConnection();
+    socketRef.current = socket;
 
-    const socket = socketRef.current;
+    const registerUser = () => {
+      if (user?._id) {
+        socket.emit("register-user", user._id);
+        socket.emit("get-online-users");
+      }
+    };
+
+    registerUser();
+    socket.on("connect", registerUser);
 
     const handleNotification = (notification) => {
       console.log("New notification received:", notification);
@@ -86,6 +92,7 @@ export default function Layout() {
     socket.on("new-notification", handleNotification);
 
     return () => {
+      socket.off("connect", registerUser);
       socket.off("new-notification", handleNotification);
     };
   }, [user, isChatPage, targetUserIdInUrl]);

@@ -38,6 +38,10 @@ const intitlizeSocket = async (server) => {
       io.emit("online-users-list", Array.from(onlineUsers.keys()));
     });
 
+    socket.on("get-online-users", () => {
+      socket.emit("online-users-list", Array.from(onlineUsers.keys()));
+    });
+
     // Existing chat events
     socket.on("joinChat", ({ userId, targetUserId, firstName }) => {
       const roomId = secretRoomId({ userId, targetUserId });
