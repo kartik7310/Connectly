@@ -11,38 +11,34 @@ import authSide from "../assets/auth_side.png";
 
 export default function Login() {
 
-  const { register, handleSubmit, formState:{errors,isSubmitting} } = useForm({ mode:"onTouched" })
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({ mode: "onTouched" })
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const onSubmit = async(values) => {
+  const onSubmit = async (values) => {
     try {
       const res = await Auth.loginAccount({ email: values.email, password: values.password });
-      console.log("res",res);
       
-     if(res?.data?.success){
-       dispatch(addUser(res.data.user));
-      toast.success(res.message || "Logged in");
-      navigate("/feed", { replace:true })
-     }
-    } catch(err){
-        toast.error(err.message);
+      if (res?.data?.success) {
+        dispatch(addUser(res.data.user));
+        toast.success(res.message || "Logged in successfully");
+        navigate("/feed", { replace: true })
+      }
+    } catch (err) {
+      toast.error(err.message || "Login failed");
     }
   }
 
 
   const handleSuccess = async (credentialResponse) => {
     const idToken = credentialResponse?.credential;
-    console.log("token",idToken);
     
     if (!idToken) {
       toast.error("Google login failed: Missing credential token");
       return;
     }
     try {
-    
       const response = await Auth.googleLoginAccount(idToken);
-      console.log("res", response);
       dispatch(addUser(response.data.user));
       toast.success(response.data?.message || "Google login successful!");
       navigate("/feed", { replace: true });
@@ -52,90 +48,94 @@ export default function Login() {
         error?.message ||
         "Google login failed. Please try again.";
       toast.error(message);
-      console.error("Login failed:", error);
     }
   };
 
   const handleError = () => {
     toast.error("Google login failed. Please try again.");
-    console.error("Google login failed");
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-base-900 px-4 py-8">
-      <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 bg-base-800 shadow-xl rounded-2xl overflow-hidden">
-        
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8 font-sans">
+      <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 bg-white shadow-xl shadow-gray-200/50 rounded-2xl overflow-hidden border border-gray-100">
+
         {/* Left Side - Image */}
-        <div className="hidden md:block relative h-full">
-          <img 
-            src={authSide} 
-            alt="Login Visual" 
-            className="w-full h-full object-cover absolute inset-0"
+        <div className="hidden md:block relative h-full bg-gray-100">
+          <img
+            src={authSide}
+            alt="Login Visual"
+            className="w-full h-full object-cover absolute inset-0 opacity-90 mix-blend-multiply"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-base-900/90 to-transparent flex flex-col justify-end p-8">
-            <h2 className="text-3xl font-bold text-white mb-2">Welcome Back to Connexto</h2>
-            <p className="text-slate-300 font-medium">Log in to continue your journey with us.</p>
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent flex flex-col justify-end p-10">
+            <h2 className="text-3xl font-bold text-white mb-3">Welcome Back to Connexto</h2>
+            <p className="text-gray-200 font-medium leading-relaxed">Join thousands of professionals building meaningful connections every day.</p>
           </div>
         </div>
 
         {/* Right Side - Form */}
-        <div className="p-8 md:p-12 w-full flex flex-col justify-center">
-          
+        <div className="p-8 sm:p-12 w-full flex flex-col justify-center">
+
           <div className="mb-8">
-             <h2 className="text-3xl font-bold text-white mb-2">Login</h2>
-             <p className="text-slate-400 text-sm">Welcome back! Please enter your details.</p>
+            <Link to="/" className="inline-flex items-center gap-2 text-primary-600 font-bold text-xl tracking-tight mb-8">
+              <div className="w-6 h-6 rounded bg-primary-600 text-white flex items-center justify-center text-xs">
+                C
+              </div>
+              Connexto
+            </Link>
+            <h2 className="text-3xl font-bold text-gray-900 mb-2 tracking-tight">Log in to your account</h2>
+            <p className="text-gray-500 text-sm">Welcome back! Please enter your details.</p>
           </div>
 
-          <form onSubmit={handleSubmit(onSubmit)} noValidate>
+          <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
 
-            <div className="mb-5">
-              <label className="text-sm font-semibold text-slate-300 block mb-2">Email</label>
-              <input 
+            <div>
+              <label className="text-sm font-medium text-gray-700 block mb-1.5">Email address</label>
+              <input
                 type="email"
-                className={`w-full border rounded-xl px-4 py-3 bg-base-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all ${errors.email ? "border-red-500" : "border-slate-600"}`}
+                className={`w-full border rounded-lg px-4 py-2.5 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-shadow shadow-sm ${errors.email ? "border-red-300 focus:border-red-500 focus:ring-red-500" : "border-gray-300 focus:border-primary-500"}`}
                 {...register("email", validations.email)}
                 placeholder="name@example.com"
               />
-              {errors.email && <p className="text-sm text-red-400 mt-2">{errors.email.message}</p>}
+              {errors.email && <p className="text-sm text-red-500 mt-1.5 font-medium">{errors.email.message}</p>}
             </div>
 
-            <div className="mb-5">
-              <label className="text-sm font-semibold text-slate-300 block mb-2">Password</label>
-              <input 
+            <div>
+              <div className="flex justify-between items-center mb-1.5">
+                <label className="text-sm font-medium text-gray-700 block">Password</label>
+                <Link to="/forgot-password" title="Forgot Password?" className="text-sm text-primary-600 hover:text-primary-700 font-medium transition-colors">Forgot password?</Link>
+              </div>
+              <input
                 type="password"
-                className={`w-full border rounded-xl px-4 py-3 bg-base-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all ${errors.password ? "border-red-500" : "border-slate-600"}`}
+                className={`w-full border rounded-lg px-4 py-2.5 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-shadow shadow-sm ${errors.password ? "border-red-300 focus:border-red-500 focus:ring-red-500" : "border-gray-300 focus:border-primary-500"}`}
                 {...register("password", validations.password)}
                 placeholder="Enter your password"
               />
-              {errors.password && <p className="text-sm text-red-400 mt-2">{errors.password.message}</p>}
-              <div className="flex justify-end mt-2">
-                <Link to="/forgot-password" title="Forgot Password?" className="text-sm text-indigo-400 hover:text-indigo-300 font-medium">Forgot Password?</Link>
-              </div>
+              {errors.password && <p className="text-sm text-red-500 mt-1.5 font-medium">{errors.password.message}</p>}
             </div>
 
-            <button 
+            <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-slate-900 hover:bg-slate-950 text-white font-semibold py-3 rounded-xl transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full bg-gray-900 hover:bg-gray-800 text-white font-medium py-2.5 rounded-lg transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed shadow-sm mt-2"
             >
-              {isSubmitting ? "Logging in..." : "Login"}
+              {isSubmitting ? "Logging in..." : "Log in"}
             </button>
           </form>
-          
+
           {/* OR Divider */}
-          <div className="flex items-center my-6 gap-4">
-            <span className="flex-grow h-px bg-indigo-700"></span>
-            <span className="text-indigo-400 font-semibold text-sm">OR</span>
-            <span className="flex-grow h-px bg-indigo-700"></span>
+          <div className="flex items-center my-8 gap-4">
+            <span className="flex-grow h-px bg-gray-200"></span>
+            <span className="text-gray-400 font-medium text-xs uppercase tracking-wider">Or continue with</span>
+            <span className="flex-grow h-px bg-gray-200"></span>
           </div>
 
           {/* Google Login */}
           <div className="w-full flex justify-center">
-            <GoogleLogin onSuccess={handleSuccess} onError={() => toast.error("Google login failed")} />
+            <GoogleLogin onSuccess={handleSuccess} onError={handleError} theme="outline" size="large" width="100%" />
           </div>
 
-          <p className="text-sm text-center mt-6 text-slate-400">
-            New user? <Link className="text-blue-400 hover:text-blue-300 font-semibold hover:underline" to="/signup">Create an account</Link>
+          <p className="text-sm text-center mt-8 text-gray-600">
+            Don't have an account? <Link className="text-primary-600 hover:text-primary-700 font-semibold transition-colors" to="/signup">Sign up for free</Link>
           </p>
         </div>
       </div>

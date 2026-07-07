@@ -16,7 +16,7 @@ const PricingPage = () => {
         "10 chats per day",
         "3 Blogs per day",
         "No chat with AI",
-       
+
       ],
       highlight: false,
     },
@@ -41,7 +41,7 @@ const PricingPage = () => {
 
     try {
       const data = await subscriptionService.createOrder(planId);
-      
+
       if (data && data.url) {
         window.location.href = data.url;
       } else {
@@ -77,11 +77,10 @@ const PricingPage = () => {
         {plans.map((plan) => (
           <div
             key={plan.id}
-            className={`card bg-base-100 border ${
-              plan.highlight
+            className={`card bg-base-100 border ${plan.highlight
                 ? "border-primary shadow-xl scale-105"
                 : "border-base-300 shadow"
-            } transition-all`}
+              } transition-all`}
           >
             <div className="card-body">
               <div className="flex justify-between items-start">
@@ -114,9 +113,8 @@ const PricingPage = () => {
 
               <div className="card-actions mt-8">
                 <button
-                  className={`btn w-full ${
-                    plan.highlight ? "btn-primary" : "btn-outline"
-                  }`}
+                  className={`btn w-full ${plan.highlight ? "btn-primary" : "btn-outline"
+                    }`}
                   disabled={plan.id === "FREE" || user.plan === plan.id}
                   onClick={() => handlePlan(plan.id)}
                 >

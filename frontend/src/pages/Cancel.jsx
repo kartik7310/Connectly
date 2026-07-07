@@ -13,21 +13,21 @@ const Cancel = () => {
             <XCircle className="w-16 h-16 text-error" />
           </div>
         </div>
-        
+
         <h1 className="text-3xl font-bold">Payment Cancelled</h1>
-        
+
         <p className="text-gray-500">
           The payment process was cancelled and no charges were made. If this was a mistake, you can try again from the premium page.
         </p>
 
         <div className="flex flex-col gap-3 pt-4">
-          <button 
+          <button
             onClick={() => navigate("/premium")}
             className="btn btn-primary w-full"
           >
             Try Again
           </button>
-          <button 
+          <button
             onClick={() => navigate("/")}
             className="btn btn-ghost w-full"
           >

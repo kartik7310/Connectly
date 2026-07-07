@@ -4,142 +4,135 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addRequest, removeRequest } from '../store/store-slices/requestSlice'
 import connectionService from '../services/connectionService'
 import { toast } from 'react-toastify'
+import { Check, X } from 'lucide-react'
+
 const ConnectionRequest = () => {
   const dispatch = useDispatch()
   const request = useSelector((state) => state.request || [])
-  
-  const getRequestConnections = async () => {
-    
-    try {
 
+  const getRequestConnections = async () => {
+    try {
       if (request && request.length > 0) return
-      
+
       const requestData = await UserConnection.fetchRequest();
-      console.log("req", requestData.data);
-      
-  
       const requests = requestData?.data?.data || requestData?.data || [];
       dispatch(addRequest(requests))
     } catch (error) {
       console.log("Error fetching connections:", error);
     }
   }
-  
+
   useEffect(() => {
     getRequestConnections()
-
   }, [])
 
   // Handler review connection
   const handleAccept = async (status, requestId) => {
     try {
-      console.log('Accept request:', status, requestId);
-      await connectionService.reviewRequest({status,requestId});
-       dispatch(removeRequest(requestId));
-
-       toast.success('Connection accepted!');
+      await connectionService.reviewRequest({ status, requestId });
+      dispatch(removeRequest(requestId));
+      toast.success('Connection accepted!');
     } catch (error) {
       console.log("Error accepting request:", error);
-       toast.error('Failed to accept request');
+      toast.error('Failed to accept request');
     }
   };
 
   const handleReject = async (status, requestId) => {
     try {
-      console.log('Reject request:', status, requestId);
- 
-      await connectionService.reviewRequest ({status,requestId});
-   
+      await connectionService.reviewRequest({ status, requestId });
       dispatch(removeRequest(requestId));
- 
-     toast.success('Request rejected');
+      toast.success('Request rejected');
     } catch (error) {
       console.log("Error rejecting request:", error);
-       toast.error('Failed to reject request');
+      toast.error('Failed to reject request');
     }
   };
 
   if (!Array.isArray(request) || request.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[400px] text-center">
-        <div className="text-6xl mb-4">📭</div>
-        <h2 className="text-2xl font-semibold text-gray-700 mb-2">No Requests</h2>
-        <p className="text-gray-500">You don't have any connection requests at the moment</p>
+      <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
+        <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+          <span className="text-4xl text-gray-400">📭</span>
+        </div>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2 tracking-tight">No Pending Requests</h2>
+        <p className="text-gray-500 max-w-md">You don't have any connection requests at the moment. Keep exploring the feed!</p>
       </div>
     );
   }
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-6">Connection Requests ({request.length})</h2>
+    <div className="min-h-[calc(100vh-80px)] bg-gray-50 py-8 px-4 sm:px-6 lg:px-8 font-sans">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold text-gray-900 tracking-tight">Connection Requests</h2>
+          <p className="text-gray-500 mt-2">You have {request.length} pending {request.length === 1 ? 'request' : 'requests'}.</p>
+        </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {request?.map((connectionRq) => {
-          console.log("conreq", connectionRq);
-          
-          // Fix: Handle potential undefined fromUserId
-          if (!connectionRq?.fromUserId) {
-            console.warn('Missing fromUserId in request:', connectionRq);
-            return null;
-          }
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {request?.map((connectionRq) => {
+            if (!connectionRq?.fromUserId) {
+              return null;
+            }
 
-          const { _id, firstName, lastName, age, gender, photoUrl, about } = connectionRq.fromUserId;
-          // Use the request's _id, not the user's _id for accept/reject
-          const requestId = connectionRq._id;
-          
-          return (
-            <div 
-              key={requestId} 
-              className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow p-4 border border-base-300"
-            >
-              <div className="flex items-start gap-4">
-                <img
-                  src={photoUrl || 'https://via.placeholder.com/150'}
-                  alt={`${firstName} ${lastName}`}
-                  className="w-16 h-16 rounded-full object-cover flex-shrink-0"
-                  onError={(e) => {
-                    e.target.src = 'https://via.placeholder.com/150';
-                  }}
-                />
-                <div className="flex-1 min-w-0">
-                  <p className="font-bold text-lg truncate">
-                    {firstName} {lastName}
+            const { _id, firstName, lastName, age, gender, photoUrl, about } = connectionRq.fromUserId;
+            const requestId = connectionRq._id;
 
-                  </p>                                    
-                  
-                  {(age || gender) && (
-                    <p className="text-sm text-gray-600 mb-1">
-                      {age && <span>{age} years</span>}
-                      {age && gender && <span> • </span>}
-                      {gender && <span>{gender}</span>}
-                    </p>
-                  )}
-                  
-                  {about && (
-                    <p className="text-sm text-gray-500 line-clamp-2">
-                      {about}
-                    </p>
-                  )}
+            return (
+              <div
+                key={requestId}
+                className="bg-white rounded-2xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col"
+              >
+                <div className="p-6 flex items-start gap-4 flex-1">
+                  <img
+                    src={photoUrl || `https://ui-avatars.com/api/?name=${firstName}+${lastName}&background=f3f4f6&color=4b5563`}
+                    alt={`${firstName} ${lastName}`}
+                    className="w-16 h-16 rounded-full object-cover flex-shrink-0 border border-gray-100"
+                    onError={(e) => {
+                      e.target.src = `https://ui-avatars.com/api/?name=${firstName}+${lastName}&background=f3f4f6&color=4b5563`;
+                    }}
+                  />
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-bold text-lg text-gray-900 truncate">
+                      {firstName} {lastName}
+                    </h3>
 
-                  <div className="flex gap-2 mt-3">
-                    <button 
-                      className="btn btn-sm btn-primary flex-1"
-                      onClick={() => handleAccept("accepted", requestId)}
-                    >
-                      Accept
-                    </button>
-                    <button 
-                      className="btn btn-sm btn-outline btn-error flex-1"
-                      onClick={() => handleReject("rejected",requestId)}
-                    >
-                      Reject
-                    </button>
+                    {(age || gender) && (
+                      <p className="text-sm font-medium text-gray-500 mb-2 capitalize flex items-center gap-1.5">
+                        {age && <span>{age} yrs</span>}
+                        {age && gender && <span className="w-1 h-1 bg-gray-300 rounded-full"></span>}
+                        {gender && <span>{gender}</span>}
+                      </p>
+                    )}
+
+                    {about && (
+                      <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
+                        {about}
+                      </p>
+                    )}
                   </div>
                 </div>
+
+                <div className="border-t border-gray-100 p-4 bg-gray-50/50 flex gap-3">
+                  <button
+                    className="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-white border border-gray-200 hover:bg-red-50 text-red-600 hover:text-red-700 hover:border-red-200 font-medium rounded-xl transition-colors shadow-sm"
+                    onClick={() => handleReject("rejected", requestId)}
+                  >
+                    <X size={16} />
+                    Reject
+                  </button>
+                  <button
+                    className="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-xl transition-colors shadow-sm"
+                    onClick={() => handleAccept("accepted", requestId)}
+                  >
+                    <Check size={16} />
+                    Accept
+                  </button>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );
