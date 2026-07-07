@@ -2,8 +2,7 @@ import React, { useEffect } from 'react'
 import UserConnection from "../services/userService"
 import { useDispatch, useSelector } from 'react-redux'
 import { addConnection } from '../store/store-slices/connectionSlice'
-import { Link } from 'react-router-dom';
-import { MessageCircle } from 'lucide-react';
+import UserCard from '../components/UserCard'
 
 const Connections = () => {
   const connections = useSelector((state) => state.connection?.connections || state.connection || []);
@@ -11,8 +10,6 @@ const Connections = () => {
 
   const getConnections = async () => {
     try {
-      if (connections && connections.length > 0) return;
-
       const res = await UserConnection.getConnections();
 
       const list = res?.data?.users || res?.data || [];
@@ -39,56 +36,20 @@ const Connections = () => {
   }
 
   return (
-    <div className="min-h-[calc(100vh-80px)] bg-gray-50 py-8 px-4 sm:px-6 lg:px-8 font-sans">
+    <div className="min-h-[calc(100vh-80px)] py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto font-sans">
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 tracking-tight">Your Connections</h2>
-          <p className="text-gray-500 mt-2">You are connected with {connections.length} {connections.length === 1 ? 'professional' : 'professionals'}.</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">Your Connections</h1>
+          <p className="text-sm sm:text-base text-gray-500 mt-1">You are connected with {connections.length} {connections.length === 1 ? 'professional' : 'professionals'}.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {connections.map((user) => (
-            <div
+            <UserCard
               key={user._id}
-              className="bg-white rounded-2xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col"
-            >
-              <div className="p-6 flex items-start gap-4 flex-1">
-                <Link to={`/user/${user.username || user._id}`} className="shrink-0 group">
-                  <img
-                    src={user.photoUrl || `https://ui-avatars.com/api/?name=${user.firstName}+${user.lastName}&background=f3f4f6&color=4b5563`}
-                    alt={`${user.firstName} ${user.lastName}`}
-                    className="w-16 h-16 rounded-full object-cover flex-shrink-0 border border-gray-100 group-hover:scale-105 group-hover:border-primary-500 transition-all duration-300"
-                  />
-                </Link>
-                <div className="flex-1 min-w-0">
-                  <Link to={`/user/${user.username || user._id}`} className="hover:text-primary-600 transition-colors inline-block">
-                    <h3 className="font-bold text-lg text-gray-900 truncate">
-                      {user.firstName} {user.lastName}
-                    </h3>
-                  </Link>
-
-                  {(user.age || user.gender) && (
-                    <p className="text-sm font-medium text-gray-500 mb-2 capitalize flex items-center gap-1.5">
-                      {user.age && <span>{user.age} yrs</span>}
-                      {user.age && user.gender && <span className="w-1 h-1 bg-gray-300 rounded-full"></span>}
-                      {user.gender && <span>{user.gender}</span>}
-                    </p>
-                  )}
-
-                  {user.about && (
-                    <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
-                      {user.about}
-                    </p>
-                  )}
-                </div>
-              </div>
-              <div className="border-t border-gray-100 p-4 bg-gray-50/50">
-                <Link to={`/chat/${user._id}`} className="flex items-center justify-center w-full gap-2 py-2.5 px-4 bg-white border border-gray-200 hover:bg-gray-50 text-gray-900 font-medium rounded-xl transition-colors shadow-sm">
-                  <MessageCircle size={18} className="text-gray-500" />
-                  Message
-                </Link>
-              </div>
-            </div>
+              user={user}
+              type="connection"
+            />
           ))}
         </div>
       </div>

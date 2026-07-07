@@ -48,6 +48,19 @@ const Chat = () => {
     const text = inputMessage.trim();
     if (!text || !socketRef.current) return;
 
+    const tempMsg = {
+      id: "temp-" + crypto.randomUUID(),
+      text,
+      seen: false,
+      createdAt: new Date().toISOString(),
+      senderId: String(userId),
+      firstName: meFirstName,
+      lastName: meLastName,
+      photoUrl: mePhoto,
+    };
+
+    setMessages((prev) => [...prev, tempMsg]);
+
     socketRef.current.emit("send-message", {
       firstName: meFirstName,
       lastName: meLastName,
@@ -72,24 +85,41 @@ const Chat = () => {
     const socket = createSocketConnection();
     socketRef.current = socket;
 
-    socket.emit("joinChat", { userId, targetUserId, firstName: meFirstName });
-    socket.emit("register-user", userId);
+    const joinRoom = () => {
+      socket.emit("joinChat", { userId, targetUserId, firstName: meFirstName });
+      socket.emit("register-user", userId);
+      socket.emit("get-online-users");
+    };
 
-    socket.on("online-users-list", (onlineIds) => {
+    joinRoom();
+    socket.on("connect", joinRoom);
+
+    const handleOnlineList = (onlineIds) => {
       setIsOnline(onlineIds.includes(String(targetUserId)));
-    });
+    };
 
-    socket.on("typing-status", ({ userId: senderId, isTyping }) => {
+    const handleTyping = ({ userId: senderId, isTyping }) => {
       if (String(senderId) === String(targetUserId)) {
         setIsTargetTyping(isTyping);
       }
-    });
+    };
 
-    socket.on("receiveMessage", (payload) => {
+    const handleReceiveMessage = (payload) => {
       const msg = normalize(payload);
       setMessages((prev) => {
         // Prevent duplicate messages if server echoes back
         if (prev.some((m) => m.id === msg.id)) return prev;
+        
+        // Replace optimistic temp message if found
+        const tempIndex = prev.findIndex(
+          (m) => String(m.id).startsWith("temp-") && m.text === msg.text && String(m.senderId) === String(msg.senderId)
+        );
+        if (tempIndex !== -1) {
+          const updated = [...prev];
+          updated[tempIndex] = msg;
+          return updated;
+        }
+        
         return [...prev, msg];
       });
 
@@ -97,9 +127,9 @@ const Chat = () => {
       if (String(payload.senderId || payload.userId) === String(targetUserId)) {
         socket.emit("mark-messages-seen", { userId, targetUserId });
       }
-    });
+    };
 
-    socket.on("messages-seen", ({ userId: seerId, targetUserId: originalSenderId }) => {
+    const handleMessagesSeen = ({ userId: seerId }) => {
       // If the target user (the one I'm chatting with) has seen MY messages
       if (String(seerId) === String(targetUserId)) {
         setMessages((prev) =>
@@ -108,15 +138,19 @@ const Chat = () => {
           )
         );
       }
-    });
+    };
+
+    socket.on("online-users-list", handleOnlineList);
+    socket.on("typing-status", handleTyping);
+    socket.on("receiveMessage", handleReceiveMessage);
+    socket.on("messages-seen", handleMessagesSeen);
 
     return () => {
-      socket.off("receiveMessage");
-      socket.off("messages-seen");
-      socket.off("online-users-list");
-      socket.off("typing-status");
-      socket.disconnect();
-      socketRef.current = null;
+      socket.off("connect", joinRoom);
+      socket.off("online-users-list", handleOnlineList);
+      socket.off("typing-status", handleTyping);
+      socket.off("receiveMessage", handleReceiveMessage);
+      socket.off("messages-seen", handleMessagesSeen);
     };
   }, [userId, targetUserId, meFirstName, normalize]);
 

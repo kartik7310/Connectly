@@ -96,9 +96,24 @@ const UserService = {
 
   async getConnectionRequests(loggedInUser) {
     try {
+      // Find all connected users (status: "accepted") to ensure we never return someone who is already a friend
+      const acceptedConnections = await ConnectionRequest.find({
+        $or: [
+          { fromUserId: loggedInUser, status: "accepted" },
+          { toUserId: loggedInUser, status: "accepted" }
+        ]
+      }).select("fromUserId toUserId");
+
+      const connectedUserIds = new Set();
+      for (const conn of acceptedConnections) {
+        if (conn.fromUserId) connectedUserIds.add(conn.fromUserId.toString());
+        if (conn.toUserId) connectedUserIds.add(conn.toUserId.toString());
+      }
+
       const connections = await ConnectionRequest.find({
         toUserId: loggedInUser,
         status: "interested",
+        fromUserId: { $nin: Array.from(connectedUserIds) }
       }).populate("fromUserId", POPULATE_FIELDS);
       logger.info(`Fetched ${connections.length} connections for user: ${loggedInUser}`);
       console.log("connection", connections);
@@ -152,8 +167,8 @@ const UserService = {
       // Collect all connected user IDs
       const hideUserFromFeeds = new Set();
       for (const conn of connections) {
-        hideUserFromFeeds.add(conn.fromUserId.toString());
-        hideUserFromFeeds.add(conn.toUserId.toString());
+        if (conn.fromUserId) hideUserFromFeeds.add(conn.fromUserId.toString());
+        if (conn.toUserId) hideUserFromFeeds.add(conn.toUserId.toString());
       }
 
       // Fetch users excluding connected ones and self
