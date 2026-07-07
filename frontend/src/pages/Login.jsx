@@ -21,7 +21,7 @@ export default function Login() {
       
       if (res?.data?.success) {
         dispatch(addUser(res.data.user));
-        toast.success(res.message || "Logged in successfully");
+        toast.success(res.data.message || "Logged in successfully");
         navigate("/feed", { replace: true })
       }
     } catch (err) {
