@@ -1,55 +1,62 @@
 import React from "react";
 import { stripHtml } from "../utils/htmlparser";
-import { Heart } from "lucide-react";
+import { Heart, ArrowRight } from "lucide-react";
 
 const BlogCard = ({ blog }) => {
   const { title, content, blogImage, tags, likes = [] } = blog || {};
 
   return (
-    <div className="card w-full sm:w-72 md:w-80 bg-base-100 border border-base-200 shadow-sm hover:shadow-lg transition-all duration-300 rounded-xl overflow-hidden">
+    <div className="w-full bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 rounded-2xl overflow-hidden flex flex-col h-full group">
       {/* Blog image */}
-      <figure className="w-full h-48 overflow-hidden">
+      <div className="w-full h-48 overflow-hidden bg-gray-100 relative">
         <img
-          src={blogImage || "https://via.placeholder.com/400x200"}
+          src={blogImage || "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80"}
           alt={title || "Blog image"}
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
-      </figure>
-    
-      {/* Blog details */}
-      <div className="card-body text-center px-5 py-6">
-        <h2 className="card-title text-lg font-semibold mb-2 line-clamp-2">
-          {title || "Untitled Blog"}
-        </h2>
-
-      <p className="text-gray-600 text-sm line-clamp-3 mb-4">
-  {content
-    ? `${stripHtml(content).slice(0, 80)}... Read More`
-    : "No content available."}
-</p>
-
-        {/* Likes section */}
-        <div className="flex items-center justify-center gap-1 mt-3">
-          <Heart className="w-4 h-4 text-red-500 fill-red-500" />
-          <span className="text-xs text-gray-600 font-medium">{likes.length}</span>
+        <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm border border-gray-100">
+          <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" />
+          <span className="text-xs text-gray-700 font-semibold">{likes.length}</span>
         </div>
+      </div>
+
+      {/* Blog details */}
+      <div className="p-6 flex flex-col flex-1">
+        <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-primary-600 transition-colors">
+          {title || "Untitled Blog"}
+        </h3>
+
+        <p className="text-gray-600 text-sm line-clamp-3 mb-6 leading-relaxed flex-1">
+          {content
+            ? stripHtml(content)
+            : "No content available."}
+        </p>
 
         {/* Tags section */}
-       <div className="card-actions justify-center flex-wrap gap-2 mt-3">
-  {Array.isArray(tags) && tags.length > 0 ? (
-    tags.map((tag, index) => (
-      <span
-        
-        key={index}
-        className="bg-base-300 text-gray-700 text-xs font-medium px-3 py-1 rounded-full hover:bg-base-200 transition cursor-pointer"
-      >
-        #{tag}
-      </span>
-    ))
-  ) : (
-    <span className="text-xs text-gray-400 italic">No tags</span>
-  )}
-</div>
+        <div className="flex flex-wrap gap-1.5 mb-4 pt-4 border-t border-gray-100">
+          {Array.isArray(tags) && tags.length > 0 ? (
+            tags.slice(0, 3).map((tag, index) => (
+              <span
+                key={index}
+                className="bg-gray-100 text-gray-600 text-[11px] font-medium px-2.5 py-1 rounded-md"
+              >
+                #{tag}
+              </span>
+            ))
+          ) : (
+            <span className="text-xs text-gray-400 italic">No tags</span>
+          )}
+          {Array.isArray(tags) && tags.length > 3 && (
+            <span className="bg-gray-100 text-gray-500 text-[11px] font-medium px-2 py-1 rounded-md">
+              +{tags.length - 3}
+            </span>
+          )}
+        </div>
+
+        <div className="flex items-center text-primary-600 font-semibold text-xs gap-1 group-hover:translate-x-1 transition-transform">
+          <span>Read Article</span>
+          <ArrowRight size={14} />
+        </div>
       </div>
     </div>
   );

@@ -20,11 +20,13 @@
     "jodit-react": "^5.2.38",
     "lucide-react": "^0.553.0",
     "react": "^19.1.1",
+    "react-confetti": "^6.4.0",
     "react-dom": "^19.1.1",
     "react-hook-form": "^7.66.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.9.5",
     "react-toastify": "^11.0.5",
+    "react-use": "^17.6.1",
     "socket.io-client": "^4.8.1",
     "tailwindcss": "^4.1.16",
     "zod": "^4.1.12"

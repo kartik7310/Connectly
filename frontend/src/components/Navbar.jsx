@@ -141,7 +141,7 @@ import Auth from "../services/authService";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { removeUser } from "../store/store-slices/userSlice";
-import { Bell } from "lucide-react";
+import { Bell, LogOut, Settings, User } from "lucide-react";
 import { clearAllNotifications } from "../store/store-slices/notificationSlice";
 
 const Navbar = () => {
@@ -156,7 +156,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await Auth.logout();
-      toast.success("Logged out");
+      toast.success("Logged out successfully");
       dispatch(removeUser());
       navigate("/login", { replace: true });
     } catch (error) {
@@ -165,94 +165,72 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-200 shadow-md px-4">
+    <div className="navbar bg-white border-b border-gray-200 px-4 sm:px-8 h-16 sticky top-0 z-50">
       {/* LEFT */}
       <div className="flex-1">
-        <Link to="/feed" className="btn btn-ghost text-xl">
-          🧑‍💻 Connexto
+        <Link to="/feed" className="text-xl font-bold text-gray-900 tracking-tight flex items-center gap-2">
+          <div className="w-8 h-8 rounded-lg bg-primary-600 text-white flex items-center justify-center">
+            C
+          </div>
+          Connexto
         </Link>
       </div>
 
       {/* RIGHT */}
-      <div className="flex items-center gap-4">
-
-        {/* ================= NOTIFICATION ================= */}
+      <div className="flex items-center gap-2 sm:gap-4">
+        {/* NOTIFICATION */}
         <div className="dropdown dropdown-end">
           <label
             tabIndex={0}
-            className="btn btn-ghost btn-circle relative"
+            className="btn btn-ghost btn-circle relative text-gray-600 hover:bg-gray-100 transition-colors"
           >
-            <Bell className="w-6 h-6" />
+            <Bell className="w-5 h-5" />
 
             {unreadCount > 0 && (
-              <span className="badge badge-primary badge-sm absolute -top-1 -right-1">
-                {unreadCount}
-              </span>
+              <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
             )}
           </label>
 
-          {/* DROPDOWN PANEL */}
           <div
             tabIndex={0}
-            className="
-              dropdown-content
-              z-50
-              mt-3
-              w-80
-              bg-base-100
-              rounded-xl
-              shadow-xl
-              border border-base-300
-            "
+            className="dropdown-content z-50 mt-3 w-80 bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden"
           >
-            {/* Header */}
-            <div className="flex justify-between items-center px-4 py-3 bg-base-200 rounded-t-xl">
-              <h2 className="font-semibold text-lg">Notifications</h2>
-
+            <div className="flex justify-between items-center px-4 py-3 bg-gray-50 border-b border-gray-100">
+              <h2 className="font-semibold text-gray-800">Notifications</h2>
               {unreadCount > 0 && (
                 <button
-                  className="text-xs text-primary hover:underline"
+                  className="text-xs text-primary-600 hover:text-primary-700 font-medium"
                   onClick={() => dispatch(clearAllNotifications())}
                 >
-                  Clear all
+                  Mark all as read
                 </button>
               )}
             </div>
 
-            <div className="divider my-0" />
-
-            {/* LIST */}
             <div className="max-h-72 overflow-y-auto">
               {notifications.length === 0 ? (
-                <p className="py-6 text-center text-base-content/60">
-                  No new notifications
-                </p>
+                <div className="py-8 text-center flex flex-col items-center justify-center">
+                  <Bell className="w-8 h-8 text-gray-300 mb-2" />
+                  <p className="text-sm text-gray-500">No new notifications</p>
+                </div>
               ) : (
-                <ul>
+                <ul className="divide-y divide-gray-100">
                   {notifications.map((n, i) => (
                     <li
                       key={i}
                       onClick={() => navigate(`/chat/${n.senderId}`)}
-                      className="
-                        px-4 py-3
-                        flex gap-3 items-start
-                        hover:bg-base-200
-                        transition-colors
-                        cursor-pointer
-                        border-b border-base-200 last:border-0
-                      "
+                      className="px-4 py-3 flex gap-3 items-start hover:bg-gray-50 transition-colors cursor-pointer"
                     >
                       <img
                         src={n.photoUrl || "/default.png"}
                         alt="user"
-                        className="w-9 h-9 rounded-full object-cover flex-shrink-0"
+                        className="w-10 h-10 rounded-full object-cover flex-shrink-0 bg-gray-100 border border-gray-200"
                       />
-
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-semibold truncate">
+                      <div className="flex-1 min-w-0 pt-0.5">
+                        <p className="text-sm font-medium text-gray-900 truncate">
                           {n.firstName} {n.lastName}
                         </p>
-                        <p className="text-xs text-base-content/60 truncate">
+                        <p className="text-xs text-gray-500 truncate mt-0.5">
                           {n.text}
                         </p>
                       </div>
@@ -261,62 +239,65 @@ const Navbar = () => {
                 </ul>
               )}
             </div>
-
-            {/* FOOTER */}
-            <div className="p-3 text-center border-t border-base-200">
+            
+            <div className="p-3 text-center border-t border-gray-100 bg-gray-50">
               <Link
                 to="/connections"
-                className="text-sm text-primary hover:underline"
+                className="text-sm font-medium text-primary-600 hover:text-primary-700"
               >
-                View Connections
+                View all connections
               </Link>
             </div>
           </div>
         </div>
 
-        {/* ================= PROFILE ================= */}
-        <div className="dropdown dropdown-end">
+        {/* PROFILE */}
+        <div className="dropdown dropdown-end ml-1">
           <label
             tabIndex={0}
-            className="btn btn-ghost btn-circle avatar"
+            className="btn btn-ghost btn-circle avatar hover:ring-2 hover:ring-gray-200 transition-all"
           >
-            <div className="w-10 rounded-full">
+            <div className="w-9 h-9 rounded-full bg-gray-100 border border-gray-200">
               <img
                 src={
                   user?.photoUrl ||
-                  "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  "https://ui-avatars.com/api/?name=" + (user?.firstName || "U") + "&background=0D8ABC&color=fff"
                 }
                 alt="profile"
+                className="object-cover"
               />
             </div>
           </label>
 
-          <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-56 p-2 shadow-lg border border-base-300">
-            <li>
-              <Link to="/profile" className="justify-between">
-                Profile
+          <ul className="menu menu-sm dropdown-content bg-white rounded-xl z-50 mt-3 w-56 p-2 shadow-lg border border-gray-200 text-gray-700">
+            <li className="px-3 py-2 mb-2 border-b border-gray-100">
+              <div className="flex flex-col gap-1 items-start cursor-default hover:bg-transparent px-0">
+                <span className="font-semibold text-gray-900">{user?.firstName || 'User'}</span>
                 {user?.plan === "PREMIUM" ? (
-                  <span className="badge badge-primary">Premium</span>
+                  <span className="text-xs font-medium text-primary-600 bg-primary-50 px-2 py-0.5 rounded-full">Premium Member</span>
                 ) : (
-                  <span className="badge">New</span>
+                  <span className="text-xs text-gray-500">Free Plan</span>
                 )}
-              </Link>
+              </div>
             </li>
 
-            <li><Link to="/connections">Connections</Link></li>
-            <li><Link to="/feed">Feed</Link></li>
-            <li><Link to="/request-connection">Request</Link></li>
-            <li><Link to="/blogs">Blogs</Link></li>
-            <li><Link to="/premium">Premium</Link></li>
+            <li><Link to="/profile" className="hover:bg-gray-50 hover:text-gray-900 py-2"><User className="w-4 h-4 mr-2" />Profile</Link></li>
+            <li><Link to="/feed" className="hover:bg-gray-50 hover:text-gray-900 py-2">Feed</Link></li>
+            <li><Link to="/connections" className="hover:bg-gray-50 hover:text-gray-900 py-2">Connections</Link></li>
+            <li><Link to="/request-connection" className="hover:bg-gray-50 hover:text-gray-900 py-2">Requests</Link></li>
+            <li><Link to="/blogs" className="hover:bg-gray-50 hover:text-gray-900 py-2">Blogs</Link></li>
+            <li><Link to="/premium" className="hover:bg-gray-50 hover:text-gray-900 py-2">Upgrade to Premium</Link></li>
+
+            <div className="divider my-1 h-px bg-gray-100"></div>
 
             <li>
-              <button onClick={handleLogout} className="text-error">
-                Logout
+              <button onClick={handleLogout} className="text-red-600 hover:bg-red-50 hover:text-red-700 py-2 font-medium">
+                <LogOut className="w-4 h-4 mr-2" />
+                Sign out
               </button>
             </li>
           </ul>
         </div>
-
       </div>
     </div>
   );

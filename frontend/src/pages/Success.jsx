@@ -30,15 +30,15 @@ const Success = () => {
             <CheckCircle className="w-16 h-16 text-success" />
           </div>
         </div>
-        
+
         <h1 className="text-3xl font-bold">Payment Successful!</h1>
-        
+
         <p className="text-gray-500">
           Thank you for your subscription. Your account has been upgraded to **Premium**. You now have unlimited access to all features!
         </p>
 
         <div className="pt-4">
-          <button 
+          <button
             onClick={() => navigate("/feed")}
             className="btn btn-primary w-full"
           >
