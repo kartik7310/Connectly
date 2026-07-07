@@ -41,12 +41,51 @@ const userSchema = new mongoose.Schema(
     about: {
       type: String,
       default: "This is a default about of the user!",
-      maxLength: [300, "About section must not exceed 300 characters"],
+      maxLength: [500, "About section must not exceed 500 characters"],
+    },
+    bio: {
+      type: String,
+      default: "",
+      maxLength: [500, "Bio section must not exceed 500 characters"],
+    },
+    username: {
+      type: String,
+      unique: true,
+      sparse: true,
+      trim: true,
+      lowercase: true,
+    },
+    dob: {
+      type: Date,
     },
     photoUrl: {
       type: String,
       default: "https://geographyandyou.com/images/user-profile.png",
-      
+    },
+    coverImage: {
+      type: String,
+      default: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=1600&q=80",
+    },
+    profession: {
+      type: String,
+      default: "",
+      trim: true,
+    },
+    location: {
+      type: String,
+      default: "",
+      trim: true,
+    },
+    website: {
+      type: String,
+      default: "",
+      trim: true,
+    },
+    socialLinks: {
+      github: { type: String, default: "" },
+      linkedin: { type: String, default: "" },
+      twitter: { type: String, default: "" },
+      instagram: { type: String, default: "" },
     },
     authProvider: { type: String, enum: ["local", "google"], default: "local" },
     role: { type: String, enum: ["user", "admin"], default: "user" },

@@ -1,9 +1,11 @@
+import mongoose from "mongoose";
 import logger from "../config/logger.js";
 import ConnectionRequest from "../models/connectionRequest.js";
 import User from "../models/user.js";
+import Blog from "../models/blog.js";
 import AppError from "../utils/AppError.js";
 
-const POPULATE_FIELDS = "firstName lastName age photoUrl skills about gender ";
+const POPULATE_FIELDS = "firstName lastName username bio age photoUrl coverImage profession location website socialLinks skills about gender ";
 const UserService = {
   async getProfile(userId) {
     try {
@@ -16,6 +18,79 @@ const UserService = {
       return user;
     } catch (error) {
       throw new Error("Error retrieving user profile");
+    }
+  },
+
+  async getPublicProfile(identifier, loggedInUserId) {
+    try {
+      let query = [];
+      if (mongoose.Types.ObjectId.isValid(identifier)) {
+        query.push({ _id: identifier });
+      }
+      query.push({ username: identifier.toLowerCase().trim() });
+
+      const targetUser = await User.findOne({ $or: query }).select("-password -otp");
+      if (!targetUser) {
+        throw new Error("User profile not found");
+      }
+
+      if (!targetUser.username) {
+        const cleanName = (targetUser.firstName || "user").toLowerCase().replace(/[^a-z0-9_]/g, "");
+        targetUser.username = `${cleanName}_${targetUser._id.toString().slice(-6)}`;
+        await targetUser.save();
+      }
+
+      const blogCount = await Blog.countDocuments({ author: targetUser._id });
+      const blogs = await Blog.find({ author: targetUser._id }).sort({ createdAt: -1 }).limit(20);
+
+      const connectionCount = await ConnectionRequest.countDocuments({
+        $or: [
+          { fromUserId: targetUser._id, status: "accepted" },
+          { toUserId: targetUser._id, status: "accepted" }
+        ]
+      });
+
+      let connectionStatus = "not_connected";
+      let isConnected = false;
+      let requestId = null;
+
+      if (loggedInUserId && loggedInUserId.toString() === targetUser._id.toString()) {
+        connectionStatus = "self";
+      } else if (loggedInUserId) {
+        const connReq = await ConnectionRequest.findOne({
+          $or: [
+            { fromUserId: loggedInUserId, toUserId: targetUser._id },
+            { fromUserId: targetUser._id, toUserId: loggedInUserId }
+          ]
+        });
+
+        if (connReq) {
+          if (connReq.status === "accepted") {
+            connectionStatus = "connected";
+            isConnected = true;
+          } else if (connReq.status === "interested") {
+            if (connReq.fromUserId.toString() === loggedInUserId.toString()) {
+              connectionStatus = "request_sent";
+            } else {
+              connectionStatus = "request_received";
+              requestId = connReq._id;
+            }
+          }
+        }
+      }
+
+      return {
+        user: targetUser,
+        connectionStatus,
+        isConnected,
+        requestId,
+        blogCount,
+        connectionCount,
+        blogs
+      };
+    } catch (error) {
+      logger.error("Error retrieving public user profile", { error, identifier });
+      throw new AppError(error.message || "Error retrieving user profile", 404);
     }
   },
 

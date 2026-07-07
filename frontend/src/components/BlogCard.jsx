@@ -1,9 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { stripHtml } from "../utils/htmlparser";
 import { Heart, ArrowRight } from "lucide-react";
 
 const BlogCard = ({ blog }) => {
-  const { title, content, blogImage, tags, likes = [] } = blog || {};
+  const navigate = useNavigate();
+  const { title, content, blogImage, tags, likes = [], author } = blog || {};
 
   return (
     <div className="w-full bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 rounded-2xl overflow-hidden flex flex-col h-full group">
@@ -53,9 +55,33 @@ const BlogCard = ({ blog }) => {
           )}
         </div>
 
-        <div className="flex items-center text-primary-600 font-semibold text-xs gap-1 group-hover:translate-x-1 transition-transform">
-          <span>Read Article</span>
-          <ArrowRight size={14} />
+        <div className="flex items-center justify-between pt-2 mt-auto">
+          {author ? (
+            <div 
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                navigate(`/user/${author.username || author._id}`);
+              }}
+              className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer z-10"
+            >
+              <img
+                src={author.photoUrl || author.image || "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
+                alt={author.firstName || "Author"}
+                className="w-6 h-6 rounded-full object-cover border border-gray-200"
+              />
+              <span className="text-xs font-semibold text-gray-700 hover:text-primary-600">
+                {author.firstName} {author.lastName}
+              </span>
+            </div>
+          ) : (
+            <span className="text-xs text-gray-400 italic">Community Member</span>
+          )}
+
+          <div className="flex items-center text-primary-600 font-semibold text-xs gap-1 group-hover:translate-x-1 transition-transform">
+            <span>Read Article</span>
+            <ArrowRight size={14} />
+          </div>
         </div>
       </div>
     </div>

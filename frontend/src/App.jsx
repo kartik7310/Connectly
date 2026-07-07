@@ -15,6 +15,7 @@ import Blog from "./pages/blog"
 import BlogDetails from "./pages/BlogDetails"
 import WriteBlog from "./pages/WriteBlog"
 import EditBlog from "./pages/EditBlog"
+import PublicProfile from "./pages/PublicProfile"
 import ForgotPassword from "./pages/ForgotPassword"
 import ResetPassword from "./pages/ResetPassword"
 import Success from "./pages/Success"
@@ -66,6 +67,9 @@ function App() {
        {/* Protected routes - Require authentication */}
        <Route path="/" element={<ProtectedRoute><Body/></ProtectedRoute>}>
          <Route path="profile" element={<Profile/>}/>
+         <Route path="profile/:identifier" element={<PublicProfile/>}/>
+         <Route path="user/:identifier" element={<PublicProfile/>}/>
+         <Route path="users/:identifier" element={<PublicProfile/>}/>
          <Route path="premium" element={<Premium/>}/>
          <Route path="feed" element={<Feed/>}/>
          <Route path="connections" element={<Connections/>}/>

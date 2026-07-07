@@ -26,7 +26,7 @@ const BlogService = {
       const blogs =
         await Blog.find(query)
           .sort({ createdAt: -1 })
-          .populate("author", "firstName lastName photoUrl")
+          .populate("author", "firstName lastName photoUrl username profession bio about")
           .skip(skip)
           .limit(limit).lean()
       
@@ -68,7 +68,7 @@ const BlogService = {
         { $set: blogPayload },
         { new: true, runValidators: true }
       )
-        .populate("author", "firstName lastName")
+        .populate("author", "firstName lastName photoUrl username profession bio about")
         .lean();
 
       if (!updated) {
@@ -79,7 +79,7 @@ const BlogService = {
     },
     async fetchSingleBlog(blogId){
       try {
-         const blog = await Blog.findById(blogId).populate("author", "firstName lastName photoUrl").lean();
+         const blog = await Blog.findById(blogId).populate("author", "firstName lastName photoUrl username profession bio about").lean();
       
         if (!blog) {
           throw new AppError("Blog not found", 404);
@@ -117,7 +117,7 @@ const BlogService = {
         content,
       });
 
-      return await comment.populate("author", "firstName lastName photoUrl");
+      return await comment.populate("author", "firstName lastName photoUrl username profession bio about");
     },
     async getComments(blogId) {
       const comments = await Comment.find({ blog: blogId })

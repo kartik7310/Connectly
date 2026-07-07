@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import connectionService from "../services/connectionService";
 import { useDispatch } from "react-redux";
 import { removeFeed } from "../store/store-slices/feedSlice";
@@ -29,19 +30,19 @@ const UserCard = ({ user }) => {
 
   return (
     <div className="bg-white w-full max-w-sm mx-auto shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300 rounded-2xl overflow-hidden flex flex-col">
-      <div className="relative h-64 bg-gray-100 p-2">
+      <Link to={`/user/${user.username || _id}`} className="relative h-64 bg-gray-100 p-2 block group overflow-hidden">
         <img 
           src={photoUrl || `https://ui-avatars.com/api/?name=${firstName}+${lastName}&background=f3f4f6&color=4b5563`} 
           alt={`${firstName} ${lastName}`} 
-          className="w-full h-full object-cover rounded-xl" 
+          className="w-full h-full object-cover rounded-xl group-hover:scale-[1.02] transition-transform duration-300" 
         />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent opacity-80 rounded-xl m-2"></div>
         <div className="absolute bottom-6 left-6 right-6">
-          <h2 className="text-xl font-bold text-white tracking-tight drop-shadow-md">
+          <h2 className="text-xl font-bold text-white tracking-tight drop-shadow-md group-hover:underline decoration-white">
             {firstName} {lastName}
           </h2>
         </div>
-      </div>
+      </Link>
 
       <div className="p-6 flex-1 flex flex-col justify-between">
         <p className="text-sm text-gray-600 line-clamp-3 leading-relaxed mb-6">
