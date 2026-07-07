@@ -35,9 +35,10 @@ export const config = {
     webhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
   },
  
-  nodemailer:{
-    brevoLogin:process.env.BREVO_SMTP_LOGIN,
-    brevoPassword:process.env.BREVO_SMTP_PASSWORD,
+  brevo: {
+    apiKey: process.env.BREVO_API_KEY,
+    senderEmail: process.env.BREVO_SENDER_EMAIL,
+    senderName: process.env.BREVO_SENDER_NAME || 'Connexeto',
   },
  //redis
   redisUrl:process.env.REDIS_URL,
