@@ -128,7 +128,7 @@ const Chat = () => {
       // Fetch target user profile for header
       setIsHeaderLoading(true);
       const userRes = await userService.getUserById(targetUserId);
-      const tUser = userRes.data;
+      const tUser = userRes.data?.user || userRes.data;
       setTargetUser(tUser);
       setIsHeaderLoading(false);
 

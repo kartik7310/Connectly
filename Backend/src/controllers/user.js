@@ -51,15 +51,32 @@ const UserController = {
     }
   },
 
+  async getPublicProfile(req, res, next) {
+    try {
+      const { identifier } = req.params;
+      if (!identifier) return next(new Error("User identifier is required"));
+      const loggedInUserId = req?.user?._id || null;
+      const profileData = await UserService.getPublicProfile(identifier, loggedInUserId);
+      res.status(200).json({
+        success: true,
+        message: "Public profile retrieved successfully",
+        data: profileData,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
   async getUserById(req, res, next) {
     try {
       const { userId } = req.params;
-      if (!userId || !mongoose.Types.ObjectId.isValid(userId)) return next(new Error("Invalid User ID"));
-      const user = await UserService.getProfile(userId);
+      if (!userId) return next(new Error("User ID is required"));
+      const loggedInUserId = req?.user?._id || null;
+      const profileData = await UserService.getPublicProfile(userId, loggedInUserId);
       res.status(200).json({
         success: true,
         message: "User profile retrieved successfully",
-        data: user,
+        data: profileData,
       });
     } catch (error) {
       next(error);

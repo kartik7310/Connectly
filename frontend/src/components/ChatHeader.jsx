@@ -2,7 +2,9 @@ import { ArrowLeftIcon } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
 const ChatHeader = ({ user, isLoading, isOnline }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const profileUser = user?.user || user;
+
   if (isLoading) {
     return (
       <div className="flex items-center gap-3 p-4 border-b border-gray-200 bg-white/80 backdrop-blur-md rounded-t-2xl sm:rounded-t-none animate-pulse">
@@ -25,11 +27,11 @@ const ChatHeader = ({ user, isLoading, isOnline }) => {
         <ArrowLeftIcon size={20} />
       </button>
       
-      <Link to={`/user/${user?._id}`} className="shrink-0 group">
+      <Link to={`/user/${profileUser?.username || profileUser?._id}`} className="shrink-0 group">
         <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-200 group-hover:border-primary-500 transition-colors">
           <img
-            src={user?.photoUrl || `https://ui-avatars.com/api/?name=${user?.firstName}+${user?.lastName}&background=f3f4f6&color=4b5563`}
-            alt={user?.firstName || "User"}
+            src={profileUser?.photoUrl || `https://ui-avatars.com/api/?name=${profileUser?.firstName}+${profileUser?.lastName}&background=f3f4f6&color=4b5563`}
+            alt={profileUser?.firstName || "User"}
             className="w-full h-full object-cover"
           />
         </div>
@@ -37,7 +39,7 @@ const ChatHeader = ({ user, isLoading, isOnline }) => {
       
       <div className="flex-1 min-w-0">
         <h2 className="font-bold text-gray-900 truncate flex items-center gap-2 text-base">
-          {user?.firstName} {user?.lastName}
+          {profileUser?.firstName} {profileUser?.lastName}
           <span className={`w-2 h-2 rounded-full ${isOnline ? "bg-green-500 shadow-sm" : "bg-gray-300"}`} />
         </h2>
         <p className={`text-xs font-medium ${isOnline ? "text-green-600" : "text-gray-500"}`}>

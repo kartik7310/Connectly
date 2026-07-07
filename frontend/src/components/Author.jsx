@@ -21,12 +21,12 @@ const AuthorInfo = ({ author }) => {
 
       <div className="flex flex-col">
         <Link
-          to={`/users/${_id}`}
-          className="text-sm font-semibold text-white hover:text-blue-600 transition"
+          to={`/user/${author.username || _id}`}
+          className="text-sm font-semibold text-gray-900 hover:text-primary-600 transition-colors"
         >
           {firstName} {lastName}
         </Link>
-        <span className="text-xs text-white">Author</span>
+        <span className="text-xs text-gray-500">Author</span>
       </div>
     </div>
   );

@@ -21,7 +21,20 @@ export const updateUserSchema = z.object({
   age: z.number().min(0).max(120).optional(),
   gender: z.string().min(2).max(100).optional(),
   skills: z.array(z.string()).optional(),
-  about: z.string().max(500).optional()
+  about: z.string().max(500).optional(),
+  bio: z.string().max(500).optional(),
+  username: z.string().min(3).max(30).regex(/^[a-zA-Z0-9_]+$/, "Username can only contain letters, numbers, and underscores").optional(),
+  dob: z.string().optional(),
+  coverImage: z.string().optional(),
+  profession: z.string().max(100).optional(),
+  location: z.string().max(100).optional(),
+  website: z.string().max(200).optional(),
+  socialLinks: z.object({
+    github: z.string().optional(),
+    linkedin: z.string().optional(),
+    twitter: z.string().optional(),
+    instagram: z.string().optional(),
+  }).optional(),
 });
 
 export const resetPasswordSchema = z.object({

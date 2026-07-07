@@ -53,15 +53,19 @@ const Connections = () => {
               className="bg-white rounded-2xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col"
             >
               <div className="p-6 flex items-start gap-4 flex-1">
-                <img
-                  src={user.photoUrl || `https://ui-avatars.com/api/?name=${user.firstName}+${user.lastName}&background=f3f4f6&color=4b5563`}
-                  alt={`${user.firstName} ${user.lastName}`}
-                  className="w-16 h-16 rounded-full object-cover flex-shrink-0 border border-gray-100"
-                />
+                <Link to={`/user/${user.username || user._id}`} className="shrink-0 group">
+                  <img
+                    src={user.photoUrl || `https://ui-avatars.com/api/?name=${user.firstName}+${user.lastName}&background=f3f4f6&color=4b5563`}
+                    alt={`${user.firstName} ${user.lastName}`}
+                    className="w-16 h-16 rounded-full object-cover flex-shrink-0 border border-gray-100 group-hover:scale-105 group-hover:border-primary-500 transition-all duration-300"
+                  />
+                </Link>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-lg text-gray-900 truncate">
-                    {user.firstName} {user.lastName}
-                  </h3>
+                  <Link to={`/user/${user.username || user._id}`} className="hover:text-primary-600 transition-colors inline-block">
+                    <h3 className="font-bold text-lg text-gray-900 truncate">
+                      {user.firstName} {user.lastName}
+                    </h3>
+                  </Link>
 
                   {(user.age || user.gender) && (
                     <p className="text-sm font-medium text-gray-500 mb-2 capitalize flex items-center gap-1.5">

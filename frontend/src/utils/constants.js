@@ -1,6 +1,7 @@
 export const baseUrl = import.meta.env.VITE_API_BASE_URL
 export const apiEndpoints = {
     user: "/user",
+    publicProfile: "/user/profile",
     signUp: "/auth/signup",
     login: "/auth/login",
     sendOtp: "/auth/send-otp",
