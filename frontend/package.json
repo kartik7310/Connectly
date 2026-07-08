@@ -16,6 +16,7 @@
     "@tailwindcss/vite": "^4.1.16",
     "axios": "^1.13.1",
     "daisyui": "^5.4.2",
+    "framer-motion": "^12.42.2",
     "jodit": "^4.7.9",
     "jodit-react": "^5.2.38",
     "lucide-react": "^0.553.0",
