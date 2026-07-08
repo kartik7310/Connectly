@@ -2,6 +2,7 @@ import logger from "../config/logger.js";
 import Blog from "../models/blog.js";
 import Comment from "../models/comment.js";
 import AppError from "../utils/AppError.js";
+import BlogNotificationService from "./blogNotification.js";
 
 const BlogService = {
   async createBlog(userId, payload) {
@@ -14,6 +15,13 @@ const BlogService = {
         tags,
         blogImage,
         publishedAt,
+      });
+
+      // Start sending email notifications asynchronously without blocking the API response
+      setImmediate(() => {
+        BlogNotificationService.notifyPremiumConnections(blog, userId).catch((err) => {
+          logger.error("Error in background blog notification service:", err);
+        });
       });
 
       return blog;
