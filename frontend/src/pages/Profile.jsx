@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { addUser } from "../store/store-slices/userSlice";
 import ProfileService from "../services/profileService";
 import { User, Mail, Calendar, Info, Camera, Edit3, Save, X, ShieldCheck } from "lucide-react";
+import { isUserPremium } from "../utils/constants";
 
 const EditProfile = () => {
   const user = useSelector((store) => store.user?.user);
@@ -53,7 +54,7 @@ const EditProfile = () => {
             </h1>
             <p className="text-gray-500 mt-2 text-sm sm:text-base">Manage your personal information and preferences.</p>
           </div>
-          {user?.plan === "PREMIUM" && (
+          {isUserPremium(user) && (
             <div className="flex items-center gap-2 px-4 py-2 bg-primary-50 border border-primary-200 rounded-full text-primary-700 font-semibold text-sm shadow-sm w-fit">
               <ShieldCheck size={18} />
               Premium Member
