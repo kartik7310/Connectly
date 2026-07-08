@@ -1,6 +1,8 @@
 import { Check, CreditCard, Shield } from "lucide-react";
 import { useSelector } from "react-redux";
 import subscriptionService from "../services/subscription";
+import { isUserPremium } from "../utils/constants";
+
 const PricingPage = () => {
   const user = useSelector((store) => store.user?.user);
   console.log("user in premium", user);
@@ -65,8 +67,8 @@ const PricingPage = () => {
         {user && (
           <div className="mt-4">
             <span className="text-sm font-medium text-gray-400 uppercase tracking-widest">Current Plan:</span>
-            <span className={`ml-2 px-4 py-1 rounded-full text-xs font-bold ${user.plan === 'PREMIUM' ? 'bg-indigo-500/20 text-indigo-400 border border-indigo-500/30' : 'bg-slate-500/20 text-slate-400 border border-slate-500/30'}`}>
-              {user.plan || 'FREE'}
+            <span className={`ml-2 px-4 py-1 rounded-full text-xs font-bold ${isUserPremium(user) ? 'bg-indigo-500/20 text-indigo-400 border border-indigo-500/30' : 'bg-slate-500/20 text-slate-400 border border-slate-500/30'}`}>
+              {isUserPremium(user) ? 'PREMIUM' : 'FREE'}
             </span>
           </div>
         )}
@@ -115,12 +117,12 @@ const PricingPage = () => {
                 <button
                   className={`btn w-full ${plan.highlight ? "btn-primary" : "btn-outline"
                     }`}
-                  disabled={plan.id === "FREE" || user.plan === plan.id}
+                  disabled={plan.id === "FREE" || (plan.id === "PREMIUM" && isUserPremium(user))}
                   onClick={() => handlePlan(plan.id)}
                 >
                   {plan.id === "FREE"
                     ? "Current Plan"
-                    : "Upgrade to Premium"}
+                    : (isUserPremium(user) && plan.id === "PREMIUM" ? "Current Plan" : "Upgrade to Premium")}
                 </button>
               </div>
             </div>

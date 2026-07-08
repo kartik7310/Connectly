@@ -4,6 +4,7 @@ import ConnectionRequest from "../models/connectionRequest.js";
 import User from "../models/user.js";
 import Blog from "../models/blog.js";
 import AppError from "../utils/AppError.js";
+import { checkAndExpireUser } from "../utils/membership.js";
 
 const POPULATE_FIELDS = "firstName lastName username bio age photoUrl coverImage profession location website socialLinks skills about gender ";
 const UserService = {
@@ -15,6 +16,7 @@ const UserService = {
       if (!user) {
         throw new Error("User not found");
       }
+      await checkAndExpireUser(user);
       return user;
     } catch (error) {
       throw new Error("Error retrieving user profile");
@@ -39,6 +41,8 @@ const UserService = {
         targetUser.username = `${cleanName}_${targetUser._id.toString().slice(-6)}`;
         await targetUser.save();
       }
+
+      await checkAndExpireUser(targetUser);
 
       const blogCount = await Blog.countDocuments({ author: targetUser._id });
       const blogs = await Blog.find({ author: targetUser._id }).sort({ createdAt: -1 }).limit(20);

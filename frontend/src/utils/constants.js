@@ -133,3 +133,21 @@ export const profileInputs = [
         label: "About",
     },
 ];
+
+/**
+ * Single source of truth for checking if a user has an active Premium membership on the frontend.
+ * Membership is Premium only if:
+ * • Membership exists (user exists and has plan === "PREMIUM")
+ * • Status is Active (subscriptionStatus === "active")
+ * • Expiry date is greater than current date (if subscriptionEndDate is present)
+ *
+ * @param {Object} user - User object from Redux or API
+ * @returns {boolean} True if user is an active Premium member, false otherwise
+ */
+export const isUserPremium = (user) => {
+    if (!user) return false;
+    const isPremiumPlan = user.plan === "PREMIUM";
+    const isActiveStatus = user.subscriptionStatus === "active";
+    const hasValidExpiry = !user.subscriptionEndDate || new Date(user.subscriptionEndDate) > new Date();
+    return Boolean(isPremiumPlan && isActiveStatus && hasValidExpiry);
+};

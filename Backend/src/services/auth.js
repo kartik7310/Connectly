@@ -13,10 +13,11 @@ import otpHashing from "../utils/otpHashing.js";
 import { sendForgotPasswordTokenEmail } from "../mails/forgotPassword.js";
 import { sendResetPasswordSuccessEmail } from "../mails/resetPassword.js";
 import EmailRegex from "../utils/EmailRegex.js";
+import { checkAndExpireUser } from "../utils/membership.js";
 
 
 const AuthService = {
- 
+  
 
   async signup(data) {
 
@@ -101,6 +102,7 @@ const AuthService = {
     }
   
 
+    await checkAndExpireUser(user);
     const token = generateToken(user._id);
      const { password: _, ...safeUser } = user.toObject();
     return {token ,user:safeUser};
@@ -140,6 +142,8 @@ const AuthService = {
     await user.save();
   }
 
+  await checkAndExpireUser(user);
+
   // Generate token
   const token = generateToken(user._id);
 
@@ -152,6 +156,9 @@ const AuthService = {
       lastName: user.lastName,
       photoUrl: user.photoUrl,
       authProvider: user.authProvider,
+      plan: user.plan,
+      subscriptionStatus: user.subscriptionStatus,
+      subscriptionEndDate: user.subscriptionEndDate
     },
   };
 },

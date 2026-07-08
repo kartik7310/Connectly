@@ -143,6 +143,7 @@ import { toast } from "react-toastify";
 import { removeUser } from "../store/store-slices/userSlice";
 import { Bell, LogOut, Settings, User } from "lucide-react";
 import { clearAllNotifications } from "../store/store-slices/notificationSlice";
+import { isUserPremium } from "../utils/constants";
 
 const Navbar = () => {
   const user = useSelector((state) => state.user?.user);
@@ -273,7 +274,7 @@ const Navbar = () => {
             <li className="px-3 py-2 mb-2 border-b border-gray-100">
               <div className="flex flex-col gap-1 items-start cursor-default hover:bg-transparent px-0">
                 <span className="font-semibold text-gray-900">{user?.firstName || 'User'}</span>
-                {user?.plan === "PREMIUM" ? (
+                {isUserPremium(user) ? (
                   <span className="text-xs font-medium text-primary-600 bg-primary-50 px-2 py-0.5 rounded-full">Premium Member</span>
                 ) : (
                   <span className="text-xs text-gray-500">Free Plan</span>

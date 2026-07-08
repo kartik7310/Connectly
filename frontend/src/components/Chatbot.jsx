@@ -3,11 +3,11 @@ import { Send, Bot, User, MessageSquare, X, Minus, ShieldCheck } from "lucide-re
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { baseUrl } from "../utils/constants";
+import { baseUrl, isUserPremium } from "../utils/constants";
 
 export default function Chatbot() {
   const user = useSelector((state) => state.user?.user);
-  const isPremium = user?.plan === "PREMIUM";
+  const isPremium = isUserPremium(user);
 
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([

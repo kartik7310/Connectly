@@ -1,4 +1,5 @@
 import User from "../models/user.js";
+import { checkAndExpireUser } from "../utils/membership.js";
 
 const ProfileService = {
   async getProfile(userId) {
@@ -12,6 +13,7 @@ const ProfileService = {
         user.username = `${cleanName}_${user._id.toString().slice(-6)}`;
         await user.save();
       }
+      await checkAndExpireUser(user);
       return user;
     } catch (error) {
       throw new Error(error.message || "Error retrieving user profile");
@@ -54,6 +56,7 @@ const ProfileService = {
         throw new Error("User not found");
       }
 
+      await checkAndExpireUser(updatedUser);
       return updatedUser;
     } catch (error) {
       throw new Error(error.message || "Error updating user profile");

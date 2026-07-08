@@ -3,6 +3,7 @@ import User from "../models/user.js";
 import logger from "../config/logger.js";
 import AppError from "../utils/AppError.js";
 import { config } from "../config/env.js";
+import { checkAndExpireUser, isUserPremium } from "../utils/membership.js";
 
 
 export const protect = async (req, res, next) => {
@@ -18,8 +19,17 @@ export const protect = async (req, res, next) => {
       return next(new AppError("Invalid or expired token", 401));
     }
     req.user = await User.findById(decoded.id).select("-password");
+    await checkAndExpireUser(req.user);
     next();
   } catch (error) {
     next(error);
   }
+};
+
+export const requirePremium = (req, res, next) => {
+  if (!req.user || !isUserPremium(req.user)) {
+    logger.warn(`Premium access denied for user: ${req.user?._id || 'unknown'}`);
+    return next(new AppError("This feature requires an active Premium Membership.", 403));
+  }
+  next();
 };

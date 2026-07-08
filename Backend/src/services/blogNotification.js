@@ -2,6 +2,7 @@ import ConnectionRequest from "../models/connectionRequest.js";
 import User from "../models/user.js";
 import logger from "../config/logger.js";
 import { sendBlogNotificationEmail } from "../mails/blogNotification.js";
+import { getPremiumUserQuery } from "../utils/membership.js";
 
 const BlogNotificationService = {
   /**
@@ -51,17 +52,10 @@ const BlogNotificationService = {
         return;
       }
 
-      // 4. Query only Premium members with active membership, fetching only required fields
-      const now = new Date();
+      // 4. Query only Premium members with active membership using Single Source of Truth
       const premiumRecipients = await User.find({
         _id: { $in: Array.from(connectedUserIds) },
-        plan: "PREMIUM",
-        subscriptionStatus: "active",
-        $or: [
-          { subscriptionEndDate: { $exists: false } },
-          { subscriptionEndDate: null },
-          { subscriptionEndDate: { $gt: now } }
-        ]
+        ...getPremiumUserQuery()
       }).select("email firstName lastName").lean();
 
       if (!premiumRecipients || premiumRecipients.length === 0) {
