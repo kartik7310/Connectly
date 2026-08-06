@@ -4,7 +4,7 @@
 
 **Enterprise-grade Real-time Messaging & Social Networking Platform**
 
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=flat&logo=github&logoColor=white)](https://github.com/kartik7310/Connectly)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=flat&logo=github&logoColor=white)](https://github.com/kartik7310/connexto)
 [![Node.js](https://img.shields.io/badge/Node.js-v18+-339933?style=flat&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![React](https://img.shields.io/badge/React-v19-61DAFB?style=flat&logo=react&logoColor=black)](https://reactjs.org/)
 [![Express](https://img.shields.io/badge/Express-v5.1-000000?style=flat&logo=express&logoColor=white)](https://expressjs.com/)
@@ -19,7 +19,7 @@
 
 ## 📋 Overview
 
-Connectly is a modern, full-stack real-time communication platform built for speed and scalability. It features a robust **Node.js/Express** backend and a high-performance **React/Vite** frontend. Connectly provides secure authentication, real-time messaging, social interaction, content management, and premium subscriptions.
+connexto is a modern, full-stack real-time communication platform built for speed and scalability. It features a robust **Node.js/Express** backend and a high-performance **React/Vite** frontend. connexto provides secure authentication, real-time messaging, social interaction, content management, and premium subscriptions.
 
 ### Key Capabilities
 
@@ -59,7 +59,7 @@ graph LR
 
 ## 💻 Frontend Application
 
-Connectly's frontend is a sleek, responsive Single Page Application (SPA) designed for a premium user experience.
+connexto's frontend is a sleek, responsive Single Page Application (SPA) designed for a premium user experience.
 
 ### Tech Stack
 
@@ -569,7 +569,7 @@ Our production deployment follows a **containerized microservices** approach wit
 - **SSL Certificate**: Let's Encrypt via Certbot (Auto-renewal enabled)
 - **SSL Termination**: Nginx handles HTTPS and forwards to backend on port 5000
 
-**Nginx Configuration** (`/etc/nginx/sites-available/connectly`):
+**Nginx Configuration** (`/etc/nginx/sites-available/connexto`):
 ```nginx
 server {
     listen 80;
@@ -597,23 +597,23 @@ server {
 
 #### 🐳 Docker Deployment
 
-**Docker Hub Repository**: `username/connectly-backend:latest`
+**Docker Hub Repository**: `username/connexto-backend:latest`
 
 **Deployment Commands** (Auto-executed via CI/CD):
 ```bash
 # Pull latest image from Docker Hub
-docker pull username/connectly-backend:latest
+docker pull username/connexto-backend:latest
 
 # Stop and remove old container
-docker stop connectly-backend && docker rm connectly-backend
+docker stop connexto-backend && docker rm connexto-backend
 
 # Run new container with environment variables
 docker run -d \
-  --name connectly-backend \
+  --name connexto-backend \
   --restart unless-stopped \
   -p 5000:5000 \
   --env-file .env \
-  -v /var/logs/connectly:/app/logs \
+  -v /var/logs/connexto:/app/logs \
   username/connectly-backend:latest
 
 # Verify deployment
