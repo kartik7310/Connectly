@@ -108,7 +108,7 @@ export default function Layout() {
   }, []);
 
   return (
-    <div className="min-h-dvh flex flex-col">
+    <div className="min-h-dvh flex flex-col pb-[70px] sm:pb-0">
 
       <Navbar />
 
