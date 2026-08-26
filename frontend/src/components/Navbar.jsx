@@ -136,12 +136,12 @@
 
 // export default Navbar
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import Auth from "../services/authService";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { removeUser } from "../store/store-slices/userSlice";
-import { Bell, LogOut, Settings, User } from "lucide-react";
+import { Bell, LogOut, Settings, User, Home, Users, UserPlus, BookOpen } from "lucide-react";
 import { clearAllNotifications } from "../store/store-slices/notificationSlice";
 import { isUserPremium } from "../utils/constants";
 
@@ -153,6 +153,7 @@ const Navbar = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = async () => {
     try {
@@ -166,6 +167,7 @@ const Navbar = () => {
   };
 
   return (
+    <>
     <div className="navbar bg-white border-b border-gray-200 px-4 sm:px-8 h-16 sticky top-0 z-50">
       {/* LEFT */}
       <div className="flex-1">
@@ -253,7 +255,8 @@ const Navbar = () => {
         </div>
 
         {/* PROFILE */}
-        <div className="dropdown dropdown-end ml-1">
+        <div className="hidden sm:block">
+          <div className="dropdown dropdown-end ml-1">
           <label
             tabIndex={0}
             className="btn btn-ghost btn-circle avatar hover:ring-2 hover:ring-gray-200 transition-all"
@@ -298,9 +301,71 @@ const Navbar = () => {
               </button>
             </li>
           </ul>
+          </div>
         </div>
       </div>
     </div>
+
+    {/* MOBILE BOTTOM NAVIGATION */}
+    <div className="sm:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-[60] pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+      <div className="flex justify-around items-center h-[60px] px-1">
+        <Link to="/feed" className={`flex flex-col items-center justify-center w-full h-full flex-1 ${location.pathname === '/feed' ? 'text-primary-600' : 'text-gray-500 hover:text-gray-900'}`}>
+          <Home className={`w-5 h-5 mb-1 ${location.pathname === '/feed' ? 'fill-primary-50 text-primary-600' : ''}`} strokeWidth={location.pathname === '/feed' ? 2.5 : 2} />
+          <span className="text-[10px] font-medium tracking-wide">Feed</span>
+        </Link>
+        
+        <Link to="/connections" className={`flex flex-col items-center justify-center w-full h-full flex-1 ${location.pathname === '/connections' ? 'text-primary-600' : 'text-gray-500 hover:text-gray-900'}`}>
+          <Users className={`w-5 h-5 mb-1 ${location.pathname === '/connections' ? 'fill-primary-50 text-primary-600' : ''}`} strokeWidth={location.pathname === '/connections' ? 2.5 : 2} />
+          <span className="text-[10px] font-medium tracking-wide">Network</span>
+        </Link>
+        
+        <Link to="/request-connection" className={`flex flex-col items-center justify-center w-full h-full flex-1 ${location.pathname === '/request-connection' ? 'text-primary-600' : 'text-gray-500 hover:text-gray-900'}`}>
+          <UserPlus className={`w-5 h-5 mb-1 ${location.pathname === '/request-connection' ? 'fill-primary-50 text-primary-600' : ''}`} strokeWidth={location.pathname === '/request-connection' ? 2.5 : 2} />
+          <span className="text-[10px] font-medium tracking-wide">Requests</span>
+        </Link>
+
+        <Link to="/blogs" className={`flex flex-col items-center justify-center w-full h-full flex-1 ${location.pathname === '/blogs' ? 'text-primary-600' : 'text-gray-500 hover:text-gray-900'}`}>
+          <BookOpen className={`w-5 h-5 mb-1 ${location.pathname === '/blogs' ? 'fill-primary-50 text-primary-600' : ''}`} strokeWidth={location.pathname === '/blogs' ? 2.5 : 2} />
+          <span className="text-[10px] font-medium tracking-wide">Blogs</span>
+        </Link>
+
+        {/* Profile / More */}
+        <div className="dropdown dropdown-top dropdown-end flex h-full flex-1">
+          <label tabIndex={0} className="flex flex-col items-center justify-center w-full h-full text-gray-500 hover:text-gray-900 cursor-pointer">
+             <div className={`w-6 h-6 mb-1 rounded-full border-[1.5px] overflow-hidden flex items-center justify-center transition-all ${['/profile', '/premium'].includes(location.pathname) ? 'border-primary-600 ring-2 ring-primary-50' : 'border-gray-300'}`}>
+               <img
+                 src={user?.photoUrl || "https://ui-avatars.com/api/?name=" + (user?.firstName || "U") + "&background=0D8ABC&color=fff"}
+                 alt="profile"
+                 className="w-full h-full object-cover"
+               />
+             </div>
+             <span className={`text-[10px] font-medium tracking-wide ${['/profile', '/premium'].includes(location.pathname) ? 'text-primary-600' : ''}`}>You</span>
+          </label>
+          <ul tabIndex={0} className="dropdown-content z-[100] menu p-2 shadow-[0_-8px_30px_rgba(0,0,0,0.12)] bg-white rounded-2xl w-56 mb-2 border border-gray-100 text-gray-700 font-medium">
+             <li className="px-3 py-2 mb-1 border-b border-gray-100">
+               <div className="flex flex-col gap-1 items-start cursor-default hover:bg-transparent px-0">
+                 <span className="font-bold text-gray-900">{user?.firstName || 'User'}</span>
+                 {isUserPremium(user) ? (
+                   <span className="text-xs font-medium text-primary-600 bg-primary-50 px-2 py-0.5 rounded-full">Premium Member</span>
+                 ) : (
+                   <span className="text-[10px] text-gray-500">Free Plan</span>
+                 )}
+               </div>
+             </li>
+             <li><Link to="/profile" className="hover:bg-gray-50 py-3"><User className="w-4 h-4 mr-2" />Profile</Link></li>
+             <li><Link to="/premium" className="hover:bg-gray-50 py-3">Upgrade to Premium</Link></li>
+             <div className="divider my-0 h-px bg-gray-100"></div>
+             <li>
+               <button onClick={handleLogout} className="text-red-600 hover:bg-red-50 py-3 mt-1">
+                 <LogOut className="w-4 h-4 mr-2" />
+                 Sign out
+               </button>
+             </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    </>
   );
 };
 
